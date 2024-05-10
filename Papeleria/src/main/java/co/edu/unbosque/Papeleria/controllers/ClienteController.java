@@ -23,5 +23,9 @@ public class ClienteController {
 		return lista;
 		
 	}
+	
+	public void nose() {
+		
+	}
 
 }
