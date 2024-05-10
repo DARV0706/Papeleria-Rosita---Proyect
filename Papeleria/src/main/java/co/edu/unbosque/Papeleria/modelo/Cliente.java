@@ -23,7 +23,7 @@ public class Cliente {
 	@Column(name = "status")
 	private int status;
 	
-	public void Cliente() {
+	public Cliente() {
 		
 	}
 

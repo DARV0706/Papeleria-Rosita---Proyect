@@ -25,7 +25,7 @@ public class Producto {
 	@Column(name = "status")
 	private String status;
 	
-	public void Producto() {
+	public  Producto() {
 		
 	}
 

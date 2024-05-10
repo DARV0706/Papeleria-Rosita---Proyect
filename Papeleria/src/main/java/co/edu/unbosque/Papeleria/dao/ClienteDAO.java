@@ -38,6 +38,19 @@ public class ClienteDAO implements ClienteCRUD {
 		// TODO Auto-generated method stub
 		return clientRepo.save(cliente);
 	}
+
+	@Override
+	public Cliente editCustom(Cliente cliente) {
+		// TODO Auto-generated method stub
+		Cliente aux = clientRepo.findById((long) cliente.getId_cliente()).orElse(null);
+		//aux.setId_cliente(cliente.getId_cliente());
+		aux.setTipo_identificacion(cliente.getTipo_identificacion());
+		aux.setRazon_social(cliente.getRazon_social());
+		aux.setSaldo_pendiente(cliente.getSaldo_pendiente());
+		aux.setStatus(1);
+		
+		return clientRepo.save(aux);
+	}
 	
 	
 

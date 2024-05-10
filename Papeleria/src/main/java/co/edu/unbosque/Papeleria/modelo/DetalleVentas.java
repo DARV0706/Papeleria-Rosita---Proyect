@@ -25,7 +25,7 @@ public class DetalleVentas {
 	@Column(name = "status")
 	private int status;
 	
-	public void DetalleVentas() {
+	public  DetalleVentas() {
 		
 	}
 

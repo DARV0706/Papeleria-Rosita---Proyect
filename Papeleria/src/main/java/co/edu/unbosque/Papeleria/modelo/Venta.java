@@ -21,7 +21,7 @@ public class Venta {
 	@Column(name = "status")
 	private int status;
 	
-	public void Venta() {
+	public  Venta() {
 		
 	}
 

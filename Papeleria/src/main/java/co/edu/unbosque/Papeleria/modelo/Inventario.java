@@ -17,7 +17,7 @@ public class Inventario {
 	@Column(name = "Producto_id_producto")
 	private String producto_id_producto;
 	
-	public void Inventario() {
+	public  Inventario() {
 		
 	}
 

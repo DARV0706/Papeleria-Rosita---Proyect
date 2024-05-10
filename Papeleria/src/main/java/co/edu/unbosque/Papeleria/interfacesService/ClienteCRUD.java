@@ -10,6 +10,7 @@ public interface ClienteCRUD {
 	public Cliente searchCustom(Long id);
 	public String deleteCustom(Long id);
 	public Cliente insertCustom(Cliente cliente);
+	public Cliente editCustom(Cliente cliente);
 	
 
 }
