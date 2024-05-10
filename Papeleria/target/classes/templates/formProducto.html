@@ -1,0 +1,137 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="formStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <button class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+  
+    <nav class="menu">
+        <ul>
+            <li><a href="MenuRosita.html">Menu principal</a></li>
+            <li><a href="formProducto.html">Productos</a></li>
+            <li><a href="formProveedores.html">Proveedores</a></li>
+            <li><a href="formInventario.html">Inventario</a></li>
+            <li><a href="formCompras.html">Compras</a></li>
+            <li><a href="formVentas.html">Ventas</a></li>
+            <li><a href="">Reportes</a></li>
+        </ul>
+    </nav>
+    <div class="arriba"></div>
+    <div class="imagen">
+        <img src="img/Portada.jpg">
+      </div>
+      <div class="logo">
+        <h1>Usuario:Rosita</h1>
+      </div>
+      <div class="menu-principal">
+        <h1>Productos</h1>
+    </div>
+
+    <div class="table">
+        <div class="table_header">
+            <p>Productos</p>
+            <div>
+                <input placeholder="Buscar">
+                <button class="agregar" onclick="openForm()">Agregar</button>
+            </div>
+        </div>
+        <div class="table_section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id Producto</th>
+                        <th>Nombre</th>
+                        <th>Iva</th>
+                        <th>Costo Unitario</th>
+                        <th>Costo Total</th>
+                        <th>Categoria</th>
+                        <th>Descripcion</th>
+                        <th>Status</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="Va el DTO">
+                        <td><span th:text="Llama la info">Id</span></td>
+                        <td><span th:text="Llama la info">nombre</span></td>
+                        <td><span th:text="Llama la info">iva</span></td>
+                        <td><span th:text="Llama la info">C/unitario</span></td>
+                        <td><span th:text="Llama la info">C/Total</span></td>
+                        <td><span th:text="Llama la info">Categoria</span></td>
+                        <td><span th:text="Llama la info">Descripcion</span></td>
+                        <td><span th:text="Llama la info">Status</span></td>
+                        <td> 
+                            <button class="actualizar" onclick="openFormAct()">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            
+                            <button>
+                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
+                            </button>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="floatingForm" class="floating-form">
+        <h2>Agregar Producto</h2>
+        <form>
+            <label for="id_producto">Id Producto:</label>
+            <input type="text" id="id_producto" name="id_producto">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            <label for="iva">Iva:</label>
+            <input type="number" id="iva" name="iva">
+            <label for="c_unitario">Costo Unitario:</label>
+            <input type="number" id="c_unitario" name="c_unitario">
+            <label for="c_total">Costo Total:</label>
+            <input type="number" id="c_total" name="c_total">
+            <label for="categoria">Categoria:</label>
+            <input type="text" id="categoria" name="categoria">
+            <label for="descripcion">Descripcion:</label>
+            <input type="text" id="descripcion" name="descripcion">
+            <label for="status">Status:</label>
+            <input type="text" id="status" name="status">
+
+            <button type="submit">Guardar</button>
+            <button type="button" onclick="closeForm()">Cancelar</button>
+        </form>
+    </div>
+
+    <script src="formScriptAgregar.js"></script>
+
+    <div id="floatingFormAct" class="floating-form">
+        <h2>Actualizar Producto</h2>
+        <form>
+            <label for="id_producto">Id Producto:</label>
+            <input type="text" id="id_producto" name="id_producto">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            <label for="iva">Iva:</label>
+            <input type="number" id="iva" name="iva">
+            <label for="c_unitario">Costo Unitario:</label>
+            <input type="number" id="c_unitario" name="c_unitario">
+            <label for="c_total">Costo Total:</label>
+            <input type="number" id="c_total" name="c_total">
+            <label for="categoria">Categoria:</label>
+            <input type="text" id="categoria" name="categoria">
+            <label for="descripcion">Descripcion:</label>
+            <input type="text" id="descripcion" name="descripcion">
+            <label for="status">Status:</label>
+            <input type="text" id="status" name="status">
+            <button type="submit">Actualizar</button>
+            <button type="button" onclick="closeFormAct()">Cancelar</button>
+        </form>
+    </div>
+    <script src="formScriptAct.js"></script>
+</body> 
+</html>
