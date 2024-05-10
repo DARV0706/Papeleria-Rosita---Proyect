@@ -30,6 +30,9 @@ public class InventarioDAO implements InventarioCRUD {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public void metodo_prueba() {
+		
+	}
 
 
 
