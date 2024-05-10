@@ -2,5 +2,5 @@
 - Iván David Carvajal
 - David Esteban López
 - Daniel Alejandro Ramos
-- Ana Carlonia Quiroga
+- Ana Carolina Quiroga
 - Manuel Terreros
