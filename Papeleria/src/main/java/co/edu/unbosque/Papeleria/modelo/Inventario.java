@@ -1,9 +1,20 @@
 package co.edu.unbosque.Papeleria.modelo;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity 
+@Table(name="Inventario")
 public class Inventario {
+	@Id
 	private String id_inventario;
+	@Column(name = "descripcion")
 	private String descripcion;
+	@Column(name = "cantidad")
 	private int cantidad;
+	@Column(name = "Producto_id_producto")
 	private String producto_id_producto;
 	
 	public void Inventario() {

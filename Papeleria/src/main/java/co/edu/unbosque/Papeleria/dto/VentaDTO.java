@@ -2,22 +2,24 @@ package co.edu.unbosque.Papeleria.dto;
 
 public class VentaDTO {
 	private int id_venta;
-	private int id_cliente;
-	private int id_producto;
-	private double total;
-	private double cambio;
+	private String fecha_venta;
+	private int totalizado;
+	private int saldo;
+	private int cliente_id_cliente;
+	private int status;
 	
 	public void VentaDTO() {
 		
 	}
 
-	public VentaDTO(int id_venta, int id_cliente, int id_producto, double total, double cambio) {
+	public VentaDTO(int id_venta, String fecha_venta, int totalizado, int saldo, int cliente_id_cliente, int status) {
 		super();
 		this.id_venta = id_venta;
-		this.id_cliente = id_cliente;
-		this.id_producto = id_producto;
-		this.total = total;
-		this.cambio = cambio;
+		this.fecha_venta = fecha_venta;
+		this.totalizado = totalizado;
+		this.saldo = saldo;
+		this.cliente_id_cliente = cliente_id_cliente;
+		this.status = status;
 	}
 
 	public int getId_venta() {
@@ -28,36 +30,46 @@ public class VentaDTO {
 		this.id_venta = id_venta;
 	}
 
-	public int getId_cliente() {
-		return id_cliente;
+	public String getFecha_venta() {
+		return fecha_venta;
 	}
 
-	public void setId_cliente(int id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setFecha_venta(String fecha_venta) {
+		this.fecha_venta = fecha_venta;
 	}
 
-	public int getId_producto() {
-		return id_producto;
+	public int getTotalizado() {
+		return totalizado;
 	}
 
-	public void setId_producto(int id_producto) {
-		this.id_producto = id_producto;
+	public void setTotalizado(int totalizado) {
+		this.totalizado = totalizado;
 	}
 
-	public double getTotal() {
-		return total;
+	public int getSaldo() {
+		return saldo;
 	}
 
-	public void setTotal(double total) {
-		this.total = total;
+	public void setSaldo(int saldo) {
+		this.saldo = saldo;
 	}
 
-	public double getCambio() {
-		return cambio;
+	public int getCliente_id_cliente() {
+		return cliente_id_cliente;
 	}
 
-	public void setCambio(double cambio) {
-		this.cambio = cambio;
+	public void setCliente_id_cliente(int cliente_id_cliente) {
+		this.cliente_id_cliente = cliente_id_cliente;
 	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+
 	
 }

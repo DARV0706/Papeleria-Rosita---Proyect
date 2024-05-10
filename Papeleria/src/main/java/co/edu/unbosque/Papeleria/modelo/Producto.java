@@ -1,13 +1,28 @@
 package co.edu.unbosque.Papeleria.modelo;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="Producto")
 public class Producto {
+	@Id
 	private String id_producto;
+	@Column(name = "nombre_producto")
 	private String nombre_producto;
+	@Column(name = "iva")
 	private int iva;
+	@Column(name = "costo_unitario")
 	private int costo_unitario;
+	@Column(name = "costo_total")
 	private int costo_total;
+	@Column(name = "Categoria_id_categoria")
 	private String categoria_id_categoria;
+	@Column(name = "descripcion")
 	private String descripcion;
+	@Column(name = "status")
 	private String status;
 	
 	public void Producto() {

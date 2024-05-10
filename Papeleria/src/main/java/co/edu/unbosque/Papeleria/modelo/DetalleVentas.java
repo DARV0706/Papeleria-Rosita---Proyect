@@ -1,25 +1,36 @@
 package co.edu.unbosque.Papeleria.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="DetalleVentas")
 public class DetalleVentas {
+	@Id
 	private int id_det_venta;
+	@Column(name = "precio")
 	private int precio;
+	@Column(name = "cantidad")
 	private int cantidad;
+	@Column(name = "monto_total")
 	private int monto_total;
+	@Column(name = "Venta_id_venta")
 	private int venta_id_venta;
+	@Column(name = "saldo_pendiente")
 	private int saldo_pendiente;
+	@Column(name = "Producto_id_producto")
 	private String producto_id_producto;
+	@Column(name = "status")
+	private int status;
 	
 	public void DetalleVentas() {
 		
 	}
 
 	public DetalleVentas(int id_det_venta, int precio, int cantidad, int monto_total, int venta_id_venta,
-			int saldo_pendiente, String producto_id_producto) {
+			int saldo_pendiente, String producto_id_producto, int status) {
 		super();
 		this.id_det_venta = id_det_venta;
 		this.precio = precio;
@@ -28,6 +39,7 @@ public class DetalleVentas {
 		this.venta_id_venta = venta_id_venta;
 		this.saldo_pendiente = saldo_pendiente;
 		this.producto_id_producto = producto_id_producto;
+		this.status = status;
 	}
 
 	public int getId_det_venta() {
@@ -85,4 +97,16 @@ public class DetalleVentas {
 	public void setProducto_id_producto(String producto_id_producto) {
 		this.producto_id_producto = producto_id_producto;
 	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+
+
+	
 }
