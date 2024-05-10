@@ -28,4 +28,7 @@ public class ClienteController {
 		
 	}
 
+	public void nose2() {
+		
+	}
 }
