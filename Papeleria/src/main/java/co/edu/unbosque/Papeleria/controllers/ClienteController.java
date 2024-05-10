@@ -20,7 +20,7 @@ public class ClienteController {
 	@GetMapping("/list_client")
 	public List listar_Cliente() {
 		List<Cliente> lista = clientDao.listCustom();
-		return null;
+		return lista;
 		
 	}
 
