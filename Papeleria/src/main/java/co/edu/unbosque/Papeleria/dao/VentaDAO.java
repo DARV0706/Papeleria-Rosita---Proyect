@@ -2,9 +2,12 @@ package co.edu.unbosque.Papeleria.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import co.edu.unbosque.Papeleria.interfacesService.VentaCRUD;
 import co.edu.unbosque.Papeleria.modelo.Venta;
 
+@Service
 public class VentaDAO implements VentaCRUD{
 
 	@Override

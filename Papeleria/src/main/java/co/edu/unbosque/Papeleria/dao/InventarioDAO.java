@@ -2,9 +2,12 @@ package co.edu.unbosque.Papeleria.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import co.edu.unbosque.Papeleria.interfacesService.InventarioCRUD;
 import co.edu.unbosque.Papeleria.modelo.Inventario;
 
+@Service
 public class InventarioDAO implements InventarioCRUD {
 
 	@Override
@@ -30,9 +33,7 @@ public class InventarioDAO implements InventarioCRUD {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public void metodo_prueba() {
-		
-	}
+
 
 
 

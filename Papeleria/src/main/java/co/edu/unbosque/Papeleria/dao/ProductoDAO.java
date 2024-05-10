@@ -2,9 +2,12 @@ package co.edu.unbosque.Papeleria.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import co.edu.unbosque.Papeleria.interfacesService.ProductoCRUD;
 import co.edu.unbosque.Papeleria.modelo.Producto;
 
+@Service
 public class ProductoDAO implements ProductoCRUD{
 
 	@Override
