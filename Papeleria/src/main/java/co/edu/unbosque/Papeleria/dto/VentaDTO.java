@@ -12,14 +12,13 @@ public class VentaDTO {
 		
 	}
 
-	public VentaDTO(int id_venta, String fecha_venta, int totalizado, int saldo, int cliente_id_cliente, int status) {
+	public VentaDTO(int id_venta, String fecha_venta, int totalizado, int saldo, int cliente_id_cliente) {
 		super();
 		this.id_venta = id_venta;
 		this.fecha_venta = fecha_venta;
 		this.totalizado = totalizado;
 		this.saldo = saldo;
 		this.cliente_id_cliente = cliente_id_cliente;
-		this.status = status;
 	}
 
 	public int getId_venta() {
@@ -61,15 +60,6 @@ public class VentaDTO {
 	public void setCliente_id_cliente(int cliente_id_cliente) {
 		this.cliente_id_cliente = cliente_id_cliente;
 	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
 
 	
 }

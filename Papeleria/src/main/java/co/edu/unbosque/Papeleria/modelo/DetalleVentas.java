@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="DetalleVentas")
+@Table(name="detalle_venta")
 public class DetalleVentas {
 	@Id
 	private int id_det_venta;
@@ -30,7 +30,7 @@ public class DetalleVentas {
 	}
 
 	public DetalleVentas(int id_det_venta, int precio, int cantidad, int monto_total, int venta_id_venta,
-			int saldo_pendiente, String producto_id_producto, int status) {
+			int saldo_pendiente, String producto_id_producto) {
 		super();
 		this.id_det_venta = id_det_venta;
 		this.precio = precio;
@@ -39,7 +39,6 @@ public class DetalleVentas {
 		this.venta_id_venta = venta_id_venta;
 		this.saldo_pendiente = saldo_pendiente;
 		this.producto_id_producto = producto_id_producto;
-		this.status = status;
 	}
 
 	public int getId_det_venta() {
@@ -98,13 +97,6 @@ public class DetalleVentas {
 		this.producto_id_producto = producto_id_producto;
 	}
 
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
 
 
 

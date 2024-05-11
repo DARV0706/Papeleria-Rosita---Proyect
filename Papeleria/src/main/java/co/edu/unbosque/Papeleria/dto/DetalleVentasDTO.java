@@ -15,7 +15,7 @@ public class DetalleVentasDTO {
 	}
 
 	public DetalleVentasDTO(int id_det_venta, int precio, int cantidad, int monto_total, int venta_id_venta,
-			int saldo_pendiente, String producto_id_producto, int status) {
+		int saldo_pendiente, String producto_id_producto) {
 		super();
 		this.id_det_venta = id_det_venta;
 		this.precio = precio;
@@ -24,7 +24,6 @@ public class DetalleVentasDTO {
 		this.venta_id_venta = venta_id_venta;
 		this.saldo_pendiente = saldo_pendiente;
 		this.producto_id_producto = producto_id_producto;
-		this.status = status;
 	}
 
 	public int getId_det_venta() {
@@ -83,14 +82,5 @@ public class DetalleVentasDTO {
 		this.producto_id_producto = producto_id_producto;
 	}
 
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-	
 
 }
