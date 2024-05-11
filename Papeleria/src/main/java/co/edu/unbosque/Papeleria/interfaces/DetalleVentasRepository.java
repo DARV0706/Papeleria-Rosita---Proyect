@@ -14,12 +14,12 @@ import co.edu.unbosque.Papeleria.modelo.DetalleVentas;
 @Repository
 public interface DetalleVentasRepository extends JpaRepository<DetalleVentas, Long>{
 
-	@Query("SELECT c FROM detalle_venta c WHERE c.status= 1")
+	@Query("SELECT c FROM DetalleVentas c WHERE c.status= 1")
 	List<DetalleVentas> saleReportActives();
 	
 	@Transactional
     @Modifying
-    @Query("UPDATE detalle_venta c SET c.status = :status WHERE c.id_det_venta = :id")
+    @Query("UPDATE DetalleVentas c SET c.status = :status WHERE c.id_det_venta = :id")
     void deleteSalesReport(@Param("id") Long id, @Param("status") int status);
 	
 
