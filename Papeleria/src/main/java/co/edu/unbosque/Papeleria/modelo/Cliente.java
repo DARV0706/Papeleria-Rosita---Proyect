@@ -28,7 +28,7 @@ public class Cliente {
 	}
 
 	public Cliente(int id_cliente, String tipo_identificacion, String razon_social, int telefono, String direccion,
-			int saldo_pendiente, int status) {
+			int saldo_pendiente) {
 		super();
 		this.id_cliente = id_cliente;
 		this.tipo_identificacion = tipo_identificacion;
@@ -36,7 +36,7 @@ public class Cliente {
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.saldo_pendiente = saldo_pendiente;
-		this.status = status;
+
 	}
 
 	public int getId_cliente() {
@@ -87,13 +87,13 @@ public class Cliente {
 		this.saldo_pendiente = saldo_pendiente;
 	}
 
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
+//	public int getStatus() {
+//		return status;
+//	}
+//
+//	public void setStatus(int status) {
+//		this.status = status;
+//	}
 
 
 

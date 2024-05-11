@@ -29,7 +29,7 @@ public class Proveedor {
 	}
 
 	public Proveedor(int id_proveedor, String tipo_identificacion, String razon_social, int telefono, String direccion,
-			int saldo_pendiente, int status) {
+			int saldo_pendiente) {
 		super();
 		this.id_proveedor = id_proveedor;
 		this.tipo_identificacion = tipo_identificacion;
@@ -37,7 +37,6 @@ public class Proveedor {
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.saldo_pendiente = saldo_pendiente;
-		this.status = status;
 	}
 
 	public int getId_proveedor() {
@@ -88,13 +87,7 @@ public class Proveedor {
 		this.saldo_pendiente = saldo_pendiente;
 	}
 
-	public int getStatus() {
-		return status;
-	}
 
-	public void setStatus(int status) {
-		this.status = status;
-	}
 	
 	
 	

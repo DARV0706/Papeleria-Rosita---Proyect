@@ -12,6 +12,7 @@ public interface ClienteCRUD {
 	public String deleteCustom(Long id);
 	public Cliente insertCustom(Cliente cliente);
 	public Cliente editCustom(Cliente cliente);
+	public List<Cliente> listDeletedCustom();
 	
 
 }

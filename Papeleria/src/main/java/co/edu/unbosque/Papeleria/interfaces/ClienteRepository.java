@@ -13,7 +13,7 @@ import co.edu.unbosque.Papeleria.modelo.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 	
-	@Query("SELECT c FROM Cliente c WHERE c.status= 1")
+	@Query("SELECT c FROM Cliente c  WHERE c.status = 1")
 	List<Cliente> customsActives();
 	
 	@Transactional
@@ -21,6 +21,7 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     @Query("UPDATE Cliente c SET c.status = :status WHERE c.id_cliente = :id")
     void deleteCustom(@Param("id") Long id, @Param("status") int status);
 	
-
+	@Query("SELECT c FROM Cliente c  WHERE c.status = 0")
+	List<Cliente> customsDeleted();
 
 }

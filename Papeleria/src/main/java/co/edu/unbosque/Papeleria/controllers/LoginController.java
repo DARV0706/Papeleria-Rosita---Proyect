@@ -51,7 +51,8 @@ public class LoginController {
             return ResponseEntity.notFound().build(); 
         }
     }
-
+    
+    //Acá al login en teoría se debería hacer un hashmap para cifrar la contraseña pero mej
 	
 	
 

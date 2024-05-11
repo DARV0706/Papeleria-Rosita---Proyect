@@ -39,7 +39,7 @@ public class ClienteController {
 	@PostMapping("/insert_custom")
     public ResponseEntity<Cliente> insertCustom(@RequestBody Cliente log) {
         Cliente newLog = clientDao.insertCustom(log);
-        return new ResponseEntity<>(newLog, HttpStatus.CREATED);
+        return new ResponseEntity<>(newLog, HttpStatus.OK);
     }
 	
     @DeleteMapping("/delete_custom/{id}")

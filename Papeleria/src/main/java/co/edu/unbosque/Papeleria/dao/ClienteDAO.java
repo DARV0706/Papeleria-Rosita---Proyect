@@ -44,9 +44,9 @@ public class ClienteDAO implements ClienteCRUD {
 		aux.getId_cliente();
 		aux.setTipo_identificacion(cliente.getTipo_identificacion());
 		aux.setRazon_social(cliente.getRazon_social());
+		aux.setTelefono(cliente.getTelefono());
+		aux.setDireccion(cliente.getDireccion());
 		aux.setSaldo_pendiente(cliente.getSaldo_pendiente());
-		aux.setStatus(1);
-		
 		return clientRepo.save(aux);
 	}
 
@@ -55,6 +55,13 @@ public class ClienteDAO implements ClienteCRUD {
 	public Optional<Cliente> searchCustom(Long id) {
 		
 		return clientRepo.findById(id);
+	}
+
+
+	@Override
+	public List<Cliente> listDeletedCustom() {
+		// TODO Auto-generated method stub
+		return clientRepo.customsDeleted();
 	}
 
 	

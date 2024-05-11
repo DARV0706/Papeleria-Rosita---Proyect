@@ -23,14 +23,14 @@ public class Producto {
 	@Column(name = "descripcion")
 	private String descripcion;
 	@Column(name = "status")
-	private String status;
+	private int status;
 	
 	public  Producto() {
 		
 	}
 
 	public Producto(String id_producto, String nombre_producto, int iva, int costo_unitario, int costo_total,
-			String categoria_id_categoria, String descripcion, String status) {
+			String categoria_id_categoria, String descripcion) {
 		super();
 		this.id_producto = id_producto;
 		this.nombre_producto = nombre_producto;
@@ -39,7 +39,7 @@ public class Producto {
 		this.costo_total = costo_total;
 		this.categoria_id_categoria = categoria_id_categoria;
 		this.descripcion = descripcion;
-		this.status = status;
+
 	}
 
 	public String getId_producto() {
@@ -98,12 +98,6 @@ public class Producto {
 		this.descripcion = descripcion;
 	}
 
-	public String getStatus() {
-		return status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 }

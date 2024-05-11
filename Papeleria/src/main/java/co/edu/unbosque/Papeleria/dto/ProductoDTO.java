@@ -8,14 +8,14 @@ public class ProductoDTO {
 	private int costo_total;
 	private String categoria_id_categoria;
 	private String descripcion;
-	private String status;
+	private int status;
 	
 	public void ProductoDTO() {
 		
 	}
 
 	public ProductoDTO(String id_producto, String nombre_producto, int iva, int costo_unitario, int costo_total,
-			String categoria_id_categoria, String descripcion, String status) {
+			String categoria_id_categoria, String descripcion ) {
 		super();
 		this.id_producto = id_producto;
 		this.nombre_producto = nombre_producto;
@@ -24,7 +24,7 @@ public class ProductoDTO {
 		this.costo_total = costo_total;
 		this.categoria_id_categoria = categoria_id_categoria;
 		this.descripcion = descripcion;
-		this.status = status;
+	
 	}
 
 	public String getId_producto() {
@@ -83,12 +83,6 @@ public class ProductoDTO {
 		this.descripcion = descripcion;
 	}
 
-	public String getStatus() {
-		return status;
-	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 }
