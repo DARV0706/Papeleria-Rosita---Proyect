@@ -34,7 +34,7 @@ public class CompraDAO implements CompraCRUD{
 		// TODO Auto-generated method stub
 		int status = 0;
 		buyRepo.deleteBuy(id, status);
-		return "CLIENTE ELIMINADO";
+		return "ELIMINACION EXITOSA";
 	}
 
 	@Override
