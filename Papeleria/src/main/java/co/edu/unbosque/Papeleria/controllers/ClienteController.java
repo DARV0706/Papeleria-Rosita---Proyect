@@ -1,6 +1,7 @@
 package co.edu.unbosque.Papeleria.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,10 +52,22 @@ public class ClienteController {
         }
     }
     
-    @PutMapping("/edit_custom/{id}")
-    public ResponseEntity<Cliente> editCustom(@PathVariable Long id){
-		return null;
+    @PutMapping("/edit_custom")
+    public ResponseEntity<Cliente> editCustom(@RequestBody Cliente cli){
+    	Cliente editCustom = clientDao.editCustom(cli);
+		return new ResponseEntity<Cliente>(editCustom, HttpStatus.ACCEPTED);
     	
+    }
+    
+	@GetMapping("/list_client/{id}")
+    public ResponseEntity<Optional> listCostumbyId(@PathVariable Long id) {
+        Optional<Cliente> logs = clientDao.searchCustom(id);
+
+        if (logs == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>( logs, HttpStatus.OK);
+        }
     }
 	
 	

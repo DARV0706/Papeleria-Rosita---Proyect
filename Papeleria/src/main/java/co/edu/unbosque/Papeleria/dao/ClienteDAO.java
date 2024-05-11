@@ -1,6 +1,7 @@
 package co.edu.unbosque.Papeleria.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import co.edu.unbosque.Papeleria.interfaces.ClienteRepository;
 import co.edu.unbosque.Papeleria.interfacesService.ClienteCRUD;
 import co.edu.unbosque.Papeleria.modelo.Cliente;
+import jakarta.persistence.TypedQuery;
 
 @Service
 public class ClienteDAO implements ClienteCRUD {
@@ -17,19 +19,15 @@ public class ClienteDAO implements ClienteCRUD {
 	@Override
 	public List<Cliente> listCustom() {
 		// TODO Auto-generated method stub
-		return clientRepo.findAll();
+		return clientRepo.customsActives();
 	}
 
-	@Override
-	public Cliente searchCustom(Long id) {
-		// TODO Auto-generated method stub
-		return clientRepo.getById(id);
-	}
-
+	
 	@Override
 	public String deleteCustom(Long id) {
 		// TODO Auto-generated method stub
-		 clientRepo.deleteById(id);;
+		int status = 0; 
+		 clientRepo.deleteCustom(id, status);;
 		return "CLIENTE ELIMINADO";
 	}
 
@@ -51,6 +49,14 @@ public class ClienteDAO implements ClienteCRUD {
 		
 		return clientRepo.save(aux);
 	}
+
+
+	@Override
+	public Optional<Cliente> searchCustom(Long id) {
+		
+		return clientRepo.findById(id);
+	}
+
 	
 	
 
