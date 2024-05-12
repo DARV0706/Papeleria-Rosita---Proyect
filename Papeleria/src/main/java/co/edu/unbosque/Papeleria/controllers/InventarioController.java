@@ -59,8 +59,8 @@ public class InventarioController {
 
 	}
 	
-	@GetMapping("/list_client/{id}")
-    public ResponseEntity<Optional> listCostumbyId(@PathVariable String id) {
+	@GetMapping("/list_inventory/{id}")
+    public ResponseEntity<Optional> listInventorybyId(@PathVariable String id) {
         Optional<Inventario> logs = inventoryDao.searchInventory(id);
         if (logs == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
