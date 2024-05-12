@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class DetalleVentaId implements Serializable{
 
+	
 	private int id_det_venta;
 	private int venta_id_venta;
 	private String producto_id_producto;
