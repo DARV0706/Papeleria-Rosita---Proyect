@@ -1,6 +1,7 @@
 package co.edu.unbosque.Papeleria.modelo;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -8,6 +9,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="detalle_venta")
 public class DetalleVentas {
+	@EmbeddedId
 	@Id
 	private int id_det_venta;
 	@Column(name = "precio")
