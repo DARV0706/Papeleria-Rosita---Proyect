@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import co.edu.unbosque.Papeleria.interfaces.DetalleVentasRepository;
 import co.edu.unbosque.Papeleria.interfacesService.DetalleVentasCRUD;
+import co.edu.unbosque.Papeleria.modelo.DetalleVentaId;
 import co.edu.unbosque.Papeleria.modelo.DetalleVentas;
 
 @Service
@@ -23,13 +24,13 @@ public class DetalleVentasDAO implements DetalleVentasCRUD{
 	}
 
 	@Override
-	public Optional<DetalleVentas> searchSaleRep(Long id) {
+	public Optional<DetalleVentas> searchSaleRep(DetalleVentaId id) {
 		// TODO Auto-generated method stub
 		return saleRepRepo.findById(id);
 	}
 
 	@Override
-	public String deleteSaleRep(Long id) {
+	public String deleteSaleRep(DetalleVentaId id) {
 		// TODO Auto-generated method stub
 		int status = 0;
 		saleRepRepo.deleteSalesReport(id, status);
@@ -40,14 +41,16 @@ public class DetalleVentasDAO implements DetalleVentasCRUD{
 	public DetalleVentas insertSaleRep(DetalleVentas SaleRep) {
 		// TODO Auto-generated method stub
 		DetalleVentas aux = saleRepRepo.save(SaleRep);
-		saleRepRepo.changeStatus(SaleRep.getId_det_venta(), 1);
+		DetalleVentaId aux2 = new DetalleVentaId(SaleRep.getId_det_venta(), SaleRep.getVenta_id_venta(), SaleRep.getProducto_id_producto());
+		saleRepRepo.changeStatus(aux2, 1);
 		return aux;
 	}
 
 	@Override
 	public DetalleVentas editSaleRep(DetalleVentas SaleRep) {
 		// TODO Auto-generated method stub
-		DetalleVentas aux = saleRepRepo.findById((long) SaleRep.getId_det_venta()).orElse(null);
+		DetalleVentaId aux2 = new DetalleVentaId(SaleRep.getId_det_venta(), SaleRep.getVenta_id_venta(), SaleRep.getProducto_id_producto());
+		DetalleVentas aux = saleRepRepo.findById(aux2).orElse(null);
 		aux.getId_det_venta();
 		aux.setPrecio(SaleRep.getPrecio());
 		aux.setCantidad(SaleRep.getCantidad());

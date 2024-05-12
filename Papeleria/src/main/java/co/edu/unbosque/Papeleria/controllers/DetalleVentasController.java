@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.edu.unbosque.Papeleria.dao.DetalleVentasDAO;
+import co.edu.unbosque.Papeleria.modelo.DetalleVentaId;
 import co.edu.unbosque.Papeleria.modelo.DetalleVentas;
 
 @Controller
@@ -42,9 +43,10 @@ public class DetalleVentasController {
 		return new ResponseEntity<>(newLog, HttpStatus.CREATED);
 	}
 
-	@DeleteMapping("/delete_salesRep/{id}")
-	public ResponseEntity<Void> deleteSalesRep(@PathVariable Long id) {
-		String resultado = salesRepDao.deleteSaleRep(id);
+	@DeleteMapping("/delete_salesRep/{id}/{id2}/{id3}")
+	public ResponseEntity<Void> deleteSalesRep(@PathVariable int id, @PathVariable int id2, @PathVariable String id3) {
+		DetalleVentaId aux = new DetalleVentaId(id, id2, id3);
+		String resultado = salesRepDao.deleteSaleRep(aux);
 		if (resultado.equals("ELIMINACION EXITOSA")) {
 			return ResponseEntity.noContent().build();
 		} else {
@@ -60,8 +62,9 @@ public class DetalleVentasController {
 	}
 
 	@GetMapping("/list_salesRep/{id}")
-	public ResponseEntity<Optional> listCostumbyId(@PathVariable Long id) {
-		Optional<DetalleVentas> logs = salesRepDao.searchSaleRep(id);
+	public ResponseEntity<Optional> listCostumbyId(@PathVariable int id, @PathVariable int id2, @PathVariable String id3) {
+		DetalleVentaId aux = new DetalleVentaId(id, id2, id3);
+		Optional<DetalleVentas> logs = salesRepDao.searchSaleRep(aux);
 		if (logs == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {

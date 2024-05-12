@@ -1,15 +1,16 @@
 package co.edu.unbosque.Papeleria.modelo;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="detalle_venta")
+@IdClass(DetalleVentaId.class)
 public class DetalleVentas {
-	@EmbeddedId
+
 	@Id
 	private int id_det_venta;
 	@Column(name = "precio")
@@ -18,10 +19,12 @@ public class DetalleVentas {
 	private int cantidad;
 	@Column(name = "monto_total")
 	private int monto_total;
+	@Id
 	@Column(name = "Venta_id_venta")
 	private int venta_id_venta;
 	@Column(name = "saldo_pendiente")
 	private int saldo_pendiente;
+	@Id
 	@Column(name = "Producto_id_producto")
 	private String producto_id_producto;
 	@Column(name = "status")
