@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,15 +27,15 @@ public class InventarioController {
 	private InventarioDAO inventoryDao;
 
 	@GetMapping("/list_inventory")
-	public ResponseEntity<List<Inventario>> listInventory() {
-		List<Inventario> logs = inventoryDao.listInventory();
+	public String mostrar_inventario(Model model) {
+		List<Inventario> inventarios = inventoryDao.listInventory();
 
-		if (logs.isEmpty()) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		} else {
-			return new ResponseEntity<>(logs, HttpStatus.OK);
-		}
+		System.out.println("Lista de inventarios: " + inventarios);
+		
+		model.addAttribute("list_inventory", inventarios);
+		return "formInventario";
 	}
+	
 
 	@PostMapping("/insert_inventory")
 	public ResponseEntity<Inventario> insertInventory(@RequestBody Inventario log) {

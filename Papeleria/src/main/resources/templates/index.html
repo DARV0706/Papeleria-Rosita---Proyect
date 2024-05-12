@@ -1,0 +1,30 @@
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<table> 
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NOMBRE</th>
+					<th>CIUDAD</th>
+					<th>OD_DESTINO</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="inventariodto:${list_inventory}">
+                        <td th:text="${inventariodto.id_inventario}"></td>
+                        <td th:text="${inventariodto.descripcion}"></td>
+                        <td th:text="${inventariodto.cantidad}"></td>
+                        <td th:text="${inventariodto.producto_id_producto}"></td>
+                        <td> 
+                            
+                        </td>
+                    </tr>
+			</tbody>	
+		</table>
+		
+	
+	</body>
+</html>

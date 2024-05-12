@@ -1,9 +1,9 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link rel="stylesheet" href="formStyle.css">
+    <link rel="stylesheet" href="css/formStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
@@ -54,11 +54,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="Va el DTO">
-                        <td><span th:text="Llama la info">Id</span></td>
-                        <td><span th:text="Llama la info">descripcion</span></td>
-                        <td><span th:text="Llama la info">cant</span></td>
-                        <td><span th:text="Llama la info">producto_id</span></td>
+                    <tr th:each="inventario:${list_inventory}">
+                        <td th:text="${inventario.id_inventario}">Id</td>
+                        <td th:text="${inventario.descripcion}">descripcion</td>
+                        <td th:text="${inventario.cantidad}">cant</td>
+                        <td th:text="${inventario.producto_id_producto}">producto_id</td>
                         <td> 
                             <button class="actualizar" onclick="openFormAct()">
                                 <i class="fa-solid fa-pen-to-square"></i>
