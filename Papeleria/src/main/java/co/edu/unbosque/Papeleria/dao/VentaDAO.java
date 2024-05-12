@@ -23,7 +23,7 @@ public class VentaDAO implements VentaCRUD {
 	}
 
 	@Override
-	public Optional<Venta> searchSale(Long id) {
+	public Optional<Venta> searchSale(int id) {
 		// TODO Auto-generated method stub
 		return salesRepo.findById(id);
 	}
@@ -47,7 +47,7 @@ public class VentaDAO implements VentaCRUD {
 	@Override
 	public Venta editSale(Venta sale) {
 		// TODO Auto-generated method stub
-		Venta aux = salesRepo.findById((long) sale.getId_venta()).orElse(null);
+		Venta aux = salesRepo.findById( sale.getId_venta()).orElse(null);
 		aux.getId_venta();
 		aux.setFecha_venta(sale.getFecha_venta());
 		aux.setTotalizado(sale.getTotalizado());

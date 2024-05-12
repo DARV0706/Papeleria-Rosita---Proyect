@@ -22,7 +22,7 @@ public class ProveedorDAO implements ProveedorCRUD {
 	}
 
 	@Override
-	public Optional<Proveedor> searchProvider(Long id) {
+	public Optional<Proveedor> searchProvider(int id) {
 		// TODO Auto-generated method stub
 		return provRepo.findById(id);
 	}
@@ -46,7 +46,7 @@ public class ProveedorDAO implements ProveedorCRUD {
 
 	@Override
 	public Proveedor editProvider(Proveedor prov) {
-		Proveedor provider = provRepo.findById((long) prov.getId_proveedor()).orElse(null);
+		Proveedor provider = provRepo.findById(prov.getId_proveedor()).orElse(null);
 		provider.getId_proveedor();
 		provider.setTipo_identificacion(prov.getTipo_identificacion());
 		provider.setRazon_social(prov.getRazon_social());
