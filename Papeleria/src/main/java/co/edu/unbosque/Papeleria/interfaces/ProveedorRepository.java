@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.unbosque.Papeleria.modelo.Proveedor;
 @Repository
-public interface ProveedorRepository extends JpaRepository<Proveedor, Integer>{
+public interface ProveedorRepository extends JpaRepository<Proveedor, Long>{
 	@Query("SELECT p FROM Proveedor p  WHERE p.status = 1")
 	List<Proveedor> providerActives();
 	

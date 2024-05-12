@@ -60,7 +60,7 @@ public class ProveedorController {
     }
     
 	@GetMapping("/list_provider/{id}")
-    public ResponseEntity<Optional> listProviderId(@PathVariable int id) {
+    public ResponseEntity<Optional> listProviderId(@PathVariable Long id) {
         Optional<Proveedor> logs = provDao.searchProvider(id);
 
         if (logs == null) {
