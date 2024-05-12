@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="formStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <button class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+  
+    <nav class="menu">
+        <ul>
+            <li><a href="MenuRosita.html">Menu principal</a></li>
+            <li><a href="formProducto.html">Productos</a></li>
+            <li><a href="formProveedores.html">Proveedores</a></li>
+            <li><a href="formInventario.html">Inventario</a></li>
+            <li><a href="formCompras.html">Compras</a></li>
+            <li><a href="formVentas.html">Ventas</a></li>
+            <li><a href="">Reportes</a></li>
+        </ul>
+    </nav>
+    <div class="arriba"></div>
+    <div class="imagen">
+        <img src="img/Portada.jpg">
+      </div>
+      <div class="logo">
+        <h1>Usuario:Rosita</h1>
+      </div>
+      <div class="menu-principal">
+        <h1>Cliente</h1>
+    </div>
+
+    <div class="table">
+        <div class="table_header">
+            <p>Cliente</p>
+            <div>
+                <input placeholder="Buscar">
+                <button class="agregar" onclick="openForm()">Agregar</button>
+            </div>
+        </div>
+        <div class="table_section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id Cliente</th>
+                        <th>Tipo Identificacion</th>
+                        <th>Razon Social</th>
+                        <th>Telefono</th>
+                        <th>Direccion</th>
+                        <th>Saldo Pendiente</th>
+                        <th>Status</th>
+                        <th>Comandos</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="Va el DTO">
+                        <td><span th:text="Llama la info">Id</span></td>
+                        <td><span th:text="Llama la info">cc</span></td>
+                        <td><span th:text="Llama la info">nit</span></td>
+                        <td><span th:text="Llama la info">3221151</span></td>
+                        <td><span th:text="Llama la info">u el bosque</span></td>
+                        <td><span th:text="Llama la info">51651</span></td>
+                        <td><span th:text="Llama la info">Activo</span></td>
+                        <td> 
+                            <button class="actualizar" onclick="openFormAct()">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            
+                            <button>
+                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
+                            </button>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="floatingForm" class="floating-form">
+        <h2>Agregar Inventario</h2>
+        <form>
+            <label for="id_cliente">Id Cliente:</label>
+            <input type="number" id="id_cliente" name="id_cliente">
+            <label for="Identificacion">Tipo Identificacion:</label>
+            <input type="text" id="Identificacion" name="Identificacion">
+            <label for="r_social">Razon Social:</label>
+            <input type="text" id="r_social" name="r_social">
+            <label for="tel">Telefono:</label>
+            <input type="number" id="tel" name="tel">
+
+            <label for="direccion">Direccion:</label>
+            <input type="text" id="direccion" name="direccion">
+            <label for="saldo_p">Saldo Pendiente:</label>
+            <input type="number" id="saldo_p" name="saldo_p">
+            <label for="status">Status</label>
+            <input type="number" id="status" name="status">
+
+            <button type="submit">Guardar</button>
+            <button type="button" onclick="closeForm()">Cancelar</button>
+        </form>
+    </div>
+
+    <script src="formScriptAgregar.js"></script>
+
+    <div id="floatingFormAct" class="floating-form">
+        <h2>Actualizar Inventario</h2>
+        <form>
+            <label for="id_cliente">Id Cliente:</label>
+            <input type="number" id="id_cliente" name="id_cliente">
+            <label for="Identificacion">Tipo Identificacion:</label>
+            <input type="text" id="Identificacion" name="Identificacion">
+            <label for="r_social">Razon Social:</label>
+            <input type="text" id="r_social" name="r_social">
+            <label for="tel">Telefono:</label>
+            <input type="number" id="tel" name="tel">
+            <label for="direccion">Direccion:</label>
+            <input type="text" id="direccion" name="direccion">
+            <label for="saldo_p">Saldo Pendiente:</label>
+            <input type="number" id="saldo_p" name="saldo_p">
+            <label for="status">Status</label>
+            <input type="number" id="status" name="status">
+
+            <button type="submit">Actualizar</button>
+            <button type="button" onclick="closeFormAct()">Cancelar</button>
+        </form>
+    </div>
+    <script src="formScriptAct.js"></script>
+</body> 
+</html>
