@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import co.edu.unbosque.Papeleria.modelo.DetalleCompra;
 
 @Repository
-public interface DetalleCompraRepository extends JpaRepository<DetalleCompra, Long> {
+public interface DetalleCompraRepository extends JpaRepository<DetalleCompra, Integer> {
 	
 
 }

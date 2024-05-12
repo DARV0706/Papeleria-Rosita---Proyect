@@ -23,13 +23,13 @@ public class DetalleCompraDAO implements DetalleCompraCRUD{
 	}
 
 	@Override
-	public Optional<DetalleCompra> searchBuyRep(Long id) {
+	public Optional<DetalleCompra> searchBuyRep(Integer id) {
 		// TODO Auto-generated method stub
 		return buyRepo.findById(id);
 	}
 
 	@Override
-	public String deleteBuyRep(Long id) {
+	public String deleteBuyRep(Integer id) {
 		// TODO Auto-generated method stub
 		buyRepo.deleteById(id);
 		return "Eliminacion realizada";
@@ -45,7 +45,7 @@ public class DetalleCompraDAO implements DetalleCompraCRUD{
 	@Override
 	public DetalleCompra editBuyRep(DetalleCompra BuyRep) {
 		// TODO Auto-generated method stub
-		DetalleCompra aux = buyRepo.findById((long) BuyRep.getId_det_compra()).orElse(null);
+		DetalleCompra aux = buyRepo.findById((Integer) BuyRep.getId_det_compra()).orElse(null);
 		aux.getId_det_compra();
 		aux.setPrecio(BuyRep.getPrecio());
 		aux.setCantidad(BuyRep.getCantidad());

@@ -43,7 +43,7 @@ public class DetalleComprasController {
 	}
 
 	@DeleteMapping("/delete_buyRep/{id}")
-	public ResponseEntity<Void> deleteSalesRep(@PathVariable Long id) {
+	public ResponseEntity<Void> deleteSalesRep(@PathVariable Integer id) {
 		String resultado = BuyRepoDao.deleteBuyRep(id);
 		if (resultado.equals("ELIMINACION EXITOSA")) {
 			return ResponseEntity.noContent().build();
@@ -60,7 +60,7 @@ public class DetalleComprasController {
 	}
 
 	@GetMapping("/list_buyRep/{id}")
-	public ResponseEntity<Optional> listCostumbyId(@PathVariable Long id) {
+	public ResponseEntity<Optional> listCostumbyId(@PathVariable Integer id) {
 		Optional<DetalleCompra> logs = BuyRepoDao.searchBuyRep(id);
 		if (logs == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
