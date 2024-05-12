@@ -8,7 +8,7 @@ import co.edu.unbosque.Papeleria.modelo.Compra;
 public interface CompraCRUD {
 
 	public List<Compra> listBuy();
-	public Optional<Compra> searchBuy(Long id);
+	public Optional<Compra> searchBuy(int id);
 	public String deleteBuy(Long id);
 	public Compra insertBuy(Compra compra);
 	public Compra editBuy(Compra compra);

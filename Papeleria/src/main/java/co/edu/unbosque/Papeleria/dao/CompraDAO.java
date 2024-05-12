@@ -24,7 +24,7 @@ public class CompraDAO implements CompraCRUD{
 	}
 
 	@Override
-	public Optional<Compra> searchBuy(Long id) {
+	public Optional<Compra> searchBuy(int id) {
 		// TODO Auto-generated method stub
 		return buyRepo.findById(id);
 	}
@@ -48,7 +48,7 @@ public class CompraDAO implements CompraCRUD{
 	@Override
 	public Compra editBuy(Compra compra) {
 		// TODO Auto-generated method stub
-		Compra aux = buyRepo.findById((long) compra.getId_compra()).orElse(null);
+		Compra aux = buyRepo.findById(compra.getId_compra()).orElse(null);
 		aux.getId_compra();
 		aux.setFecha_compra(compra.getFecha_compra());
 		aux.setFecha_llegada(compra.getFecha_llegada());

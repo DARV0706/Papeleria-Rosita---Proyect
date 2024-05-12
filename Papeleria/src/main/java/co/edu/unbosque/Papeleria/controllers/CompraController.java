@@ -60,7 +60,7 @@ public class CompraController {
 	}
 	
 	@GetMapping("/list_buy/{id}")
-    public ResponseEntity<Optional> listBuy(@PathVariable Long id) {
+    public ResponseEntity<Optional> listBuy(@PathVariable int id) {
         Optional<Compra> logs = buyDao.searchBuy(id);
 
         if (logs == null) {
