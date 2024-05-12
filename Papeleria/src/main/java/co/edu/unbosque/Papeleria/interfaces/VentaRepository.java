@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import co.edu.unbosque.Papeleria.modelo.DetalleVentas;
 import co.edu.unbosque.Papeleria.modelo.Venta;
 @Repository
-public interface VentaRepository extends JpaRepository<Venta, Long>{
+public interface VentaRepository extends JpaRepository<Venta, Integer>{
 
 	@Query("SELECT c FROM Venta c WHERE c.status= 1")
 	List<Venta> salesActives();

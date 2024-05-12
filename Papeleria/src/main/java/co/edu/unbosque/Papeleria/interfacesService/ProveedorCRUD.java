@@ -7,7 +7,7 @@ import co.edu.unbosque.Papeleria.modelo.Proveedor;
 
 public interface ProveedorCRUD {
 	public List<Proveedor> listProvider();
-	public Optional<Proveedor> searchProvider(Long id);
+	public Optional<Proveedor> searchProvider(int id);
 	public String deleteProvider(Long id);
 	public Proveedor insertProvider(Proveedor prov);
 	public Proveedor editProvider(Proveedor prov);

@@ -59,7 +59,7 @@ public class VentaController {
 	}
 	
 	@GetMapping("/list_sale/{id}")
-	public ResponseEntity<Optional> listCostumbyId(@PathVariable Long id) {
+	public ResponseEntity<Optional> listCostumbyId(@PathVariable int id) {
 		Optional<Venta> logs = saleDao.searchSale(id);
 		if (logs == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
