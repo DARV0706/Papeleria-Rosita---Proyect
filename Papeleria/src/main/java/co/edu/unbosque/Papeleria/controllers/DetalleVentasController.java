@@ -61,7 +61,7 @@ public class DetalleVentasController {
 
 	}
 
-	@GetMapping("/list_salesRep/{id}")
+	@GetMapping("/list_salesRep/{id}/{id2}/{id3}")
 	public ResponseEntity<Optional> listCostumbyId(@PathVariable int id, @PathVariable int id2, @PathVariable String id3) {
 		DetalleVentaId aux = new DetalleVentaId(id, id2, id3);
 		Optional<DetalleVentas> logs = salesRepDao.searchSaleRep(aux);
