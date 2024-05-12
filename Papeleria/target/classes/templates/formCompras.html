@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link rel="stylesheet" href="formStyle.css">
+    <link rel="stylesheet" href="css/formStyleCompras.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
@@ -81,31 +81,34 @@
     <div id="floatingForm" class="floating-form">
         <h2>Agregar Compra</h2>
         <form>
-            <label for="id_compra">Id Compra:</label>
-            <input type="number" id="id_compra" name="id_compra">
-            <label for="f_compra">Fecha Compra:</label>
-            <input type="date" id="f_compra" name="f_compra">
-            <label for="f_llegada">Fecha LLegada:</label>
-            <input type="date" id="f_llegada" name="f_llegada">
-            <label for="t_compra">Total Compra:</label>
-            <input type="number" id="t_compra" name="t_compra">
-            <label for="s_pendiente">Saldo Pendiente:</label>
-            <input type="number" id="s_pendiente" name="s_pendiente">
-            <label for="id_proveedor">Proveedor ID:</label>
-            <input type="number" id="id_proveedor" name="id_proveedor">
-
-            <label for="id_det_compra">Id Detalle Compra:</label>
-            <input type="number" id="id_det_compra" name="id_det_compra">
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio" name="precio">
-            <label for="cant">Cantidad:</label>
-            <input type="number" id="cant" name="cant">
-            <label for="monto">Monto Total:</label>
-            <input type="text" id="monto" name="monto">
-            <label for="s_pendiente">Saldo Pendiente:</label>
-            <input type="number" id="s_pendiente" name="s_pendiente">
-            <label for="id_producto">Id producto:</label>
-            <input type="text" id="id_producto" name="id_producto">
+             <div class="columna1">
+                <label for="id_compra">Id Compra:</label>
+                <input type="number" id="id_compra" name="id_compra">
+                <label for="f_compra">FechaCompra:</label>
+                <input type="date" id="f_compra" name="f_compra">
+                <label for="f_llegada">FechaLLegada:</label>
+                <input type="date" id="f_llegada" name="f_llegada">
+                <label for="t_compra">Total Compra:</label>
+                <input type="number" id="t_compra" name="t_compra">
+                <label for="s_pendiente_1">SaldoPendiente:</label>
+                <input type="number" id="s_pendiente_1" name="s_pendiente_1">
+                <label for="id_proveedor">Proveedor ID:</label>
+                <input type="number" id="id_proveedor" name="id_proveedor">
+            </div>
+            <div class="columna2">
+                <label for="id_det_compra">Id Detalle Compra:</label>
+                <input type="number" id="id_det_compra" name="id_det_compra">
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio">
+                <label for="cant">Cantidad:</label>
+                <input type="number" id="cant" name="cant">
+                <label for="monto">Monto Total:</label>
+                <input type="text" id="monto" name="monto">
+                <label for="s_pendiente_2">SaldoPendiente:</label>
+                <input type="number" id="s_pendiente_2" name="s_pendiente_2">
+                <label for="id_producto">Id producto:</label>
+                <input type="text" id="id_producto" name="id_producto">
+            </div>
             <button type="submit">Guardar</button>
             <button type="button" onclick="closeForm()">Cancelar</button>
         </form>
@@ -116,32 +119,34 @@
     <div id="floatingFormAct" class="floating-form">
         <h2>Actualizar Compra</h2>
         <form>
-            <label for="id_compra">Id Compra:</label>
-            <input type="number" id="id_compra" name="id_compra">
-            <label for="f_compra">Fecha Compra:</label>
-            <input type="date" id="f_compra" name="f_compra">
-            <label for="f_llegada">Fecha LLegada:</label>
-            <input type="date" id="f_llegada" name="f_llegada">
-            <label for="t_compra">Total Compra:</label>
-            <input type="number" id="t_compra" name="t_compra">
-            <label for="s_pendiente">Saldo Pendiente:</label>
-            <input type="number" id="s_pendiente" name="s_pendiente">
-            <label for="id_proveedor">Proveedor ID:</label>
-            <input type="number" id="id_proveedor" name="id_proveedor">
-
-            <label for="id_det_compra">Id Detalle Compra:</label>
-            <input type="number" id="id_det_compra" name="id_det_compra">
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio" name="precio">
-            <label for="cant">Cantidad:</label>
-            <input type="number" id="cant" name="cant">
-            <label for="monto">Monto Total:</label>
-            <input type="text" id="monto" name="monto">
-            <label for="s_pendiente">Saldo Pendiente:</label>
-            <input type="number" id="s_pendiente" name="s_pendiente">
-            <label for="id_producto">Id producto:</label>
-            <input type="text" id="id_producto" name="id_producto">
-
+            <div class="columna1">
+                <label for="id_compra">Id Compra:</label>
+                <input type="number" id="id_compra" name="id_compra">
+                <label for="f_compra">FechaCompra:</label>
+                <input type="date" id="f_compra" name="f_compra">
+                <label for="f_llegada">FechaLLegada:</label>
+                <input type="date" id="f_llegada" name="f_llegada">
+                <label for="t_compra">Total Compra:</label>
+                <input type="number" id="t_compra" name="t_compra">
+                <label for="s_pendiente_1">SaldoPendiente:</label>
+                <input type="number" id="s_pendiente_1" name="s_pendiente_1">
+                <label for="id_proveedor">Proveedor ID:</label>
+                <input type="number" id="id_proveedor" name="id_proveedor">
+            </div>
+            <div class="columna2">
+                <label for="id_det_compra">Id Detalle Compra:</label>
+                <input type="number" id="id_det_compra" name="id_det_compra">
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio">
+                <label for="cant">Cantidad:</label>
+                <input type="number" id="cant" name="cant">
+                <label for="monto">Monto Total:</label>
+                <input type="text" id="monto" name="monto">
+                <label for="s_pendiente_2">SaldoPendiente:</label>
+                <input type="number" id="s_pendiente_2" name="s_pendiente_2">
+                <label for="id_producto">Id producto:</label>
+                <input type="text" id="id_producto" name="id_producto">
+            </div>
             <button type="submit">Actualizar</button>
             <button type="button" onclick="closeFormAct()">Cancelar</button>
         </form>
