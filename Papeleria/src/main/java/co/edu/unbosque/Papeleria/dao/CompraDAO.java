@@ -41,7 +41,7 @@ public class CompraDAO implements CompraCRUD{
 	public Compra insertBuy(Compra compra) {
 		// TODO Auto-generated method stub
 		Compra aux = buyRepo.save(compra);
-		buyRepo.changeStatus(compra.getId_compra(), 1);
+		//buyRepo.changeStatus(compra.getId_compra(), 1);
 		return aux;
 	}
 

@@ -18,15 +18,15 @@ public interface DetalleVentasRepository extends JpaRepository<DetalleVentas, De
 	@Query("SELECT c FROM DetalleVentas c WHERE c.status= 1")
 	List<DetalleVentas> saleReportActives();
 	
-	@Transactional
-    @Modifying
-    @Query("UPDATE DetalleVentas c SET c.status = :status WHERE c.id_det_venta = :id.id_det_venta AND c.venta_id_venta = id.venta_id_venta AND c.producto_id_producto = id.producto_id_producto")
-    void deleteSalesReport(@Param("id") DetalleVentaId id, @Param("status") int status);
-	
-	@Transactional
-    @Modifying
-    @Query("UPDATE DetalleVentas c SET c.status = :status WHERE c.id_det_venta = :id.id_det_venta AND c.venta_id_venta = id.venta_id_venta AND c.producto_id_producto = id.producto_id_producto")
-	void changeStatus(@Param("id") DetalleVentaId id, @Param("status") int status);
-	
+//	@Transactional
+//    @Modifying
+//    @Query("UPDATE DetalleVentas c SET c.status = :status WHERE c.id_det_venta = :id.id_det_venta AND c.venta_id_venta = id.venta_id_venta AND c.producto_id_producto = id.producto_id_producto")
+//    void deleteSalesReport(@Param("id") DetalleVentaId id, @Param("status") int status);
+//	
+//	@Transactional
+//    @Modifying
+//    @Query("UPDATE DetalleVentas c SET c.status = :status WHERE c.id_det_venta = :id.id_det_venta AND c.venta_id_venta = id.venta_id_venta AND c.producto_id_producto = id.producto_id_producto")
+//	void changeStatus(@Param("id") DetalleVentaId id, @Param("status") int status);
+//	
 
 }

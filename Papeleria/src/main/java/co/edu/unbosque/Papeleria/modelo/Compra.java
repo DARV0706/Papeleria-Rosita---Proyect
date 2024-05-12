@@ -14,7 +14,7 @@ public class Compra {
 	private String fecha_compra;
 	@Column(name = "fecha_llegada")
 	private String fecha_llegada;
-	@Column(name = "total_compra")
+	@Column(name = "tota_compra")
 	private int total_compra;
 	@Column(name = "saldo_pendiente")
 	private int saldo_pendiente;

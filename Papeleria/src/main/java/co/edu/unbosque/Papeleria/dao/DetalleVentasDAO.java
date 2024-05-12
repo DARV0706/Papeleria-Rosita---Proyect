@@ -33,7 +33,7 @@ public class DetalleVentasDAO implements DetalleVentasCRUD{
 	public String deleteSaleRep(DetalleVentaId id) {
 		// TODO Auto-generated method stub
 		int status = 0;
-		saleRepRepo.deleteSalesReport(id, status);
+		//saleRepRepo.deleteSalesReport(id, status);
 		return "ELIMINACION EXITOSA";
 	}
 
@@ -42,7 +42,7 @@ public class DetalleVentasDAO implements DetalleVentasCRUD{
 		// TODO Auto-generated method stub
 		DetalleVentas aux = saleRepRepo.save(SaleRep);
 		DetalleVentaId aux2 = new DetalleVentaId(SaleRep.getId_det_venta(), SaleRep.getVenta_id_venta(), SaleRep.getProducto_id_producto());
-		saleRepRepo.changeStatus(aux2, 1);
+		//saleRepRepo.changeStatus(aux2, 1);
 		return aux;
 	}
 
