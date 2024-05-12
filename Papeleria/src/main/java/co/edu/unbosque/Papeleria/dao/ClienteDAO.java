@@ -42,7 +42,7 @@ public class ClienteDAO implements ClienteCRUD {
 	@Override
 	public Cliente editCustom(Cliente cliente) {
 		// TODO Auto-generated method stub
-		Cliente aux = clientRepo.findById((long) cliente.getId_cliente()).orElse(null);
+		Cliente aux = clientRepo.findById( cliente.getId_cliente()).orElse(null);
 		aux.getId_cliente();
 		aux.setTipo_identificacion(cliente.getTipo_identificacion());
 		aux.setRazon_social(cliente.getRazon_social());
@@ -54,7 +54,7 @@ public class ClienteDAO implements ClienteCRUD {
 
 
 	@Override
-	public Optional<Cliente> searchCustom(Long id) {
+	public Optional<Cliente> searchCustom(int id) {
 		
 		return clientRepo.findById(id);
 	}

@@ -60,7 +60,7 @@ public class ClienteController {
     }
     
 	@GetMapping("/list_client/{id}")
-    public ResponseEntity<Optional> listCostumbyId(@PathVariable Long id) {
+    public ResponseEntity<Optional> listCostumbyId(@PathVariable int id) {
         Optional<Cliente> logs = clientDao.searchCustom(id);
 
         if (logs == null) {

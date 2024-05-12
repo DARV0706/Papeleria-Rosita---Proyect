@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.unbosque.Papeleria.modelo.Cliente;
 @Repository
-public interface ClienteRepository extends JpaRepository<Cliente, Long> {
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 	
 	@Query("SELECT c FROM Cliente c  WHERE c.status = 1")
 	List<Cliente> customsActives();

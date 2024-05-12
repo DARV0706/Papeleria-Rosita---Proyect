@@ -8,7 +8,7 @@ import co.edu.unbosque.Papeleria.modelo.Cliente;
 public interface ClienteCRUD {
 	
 	public List<Cliente> listCustom();
-	public Optional<Cliente> searchCustom(Long id);
+	public Optional<Cliente> searchCustom(int id);
 	public String deleteCustom(Long id);
 	public Cliente insertCustom(Cliente cliente);
 	public Cliente editCustom(Cliente cliente);
