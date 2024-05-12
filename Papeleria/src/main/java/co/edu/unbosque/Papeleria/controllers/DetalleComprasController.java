@@ -25,7 +25,7 @@ public class DetalleComprasController {
 	@Autowired
 	private DetalleCompraDAO BuyRepoDao;
 	
-	@GetMapping("/list_salesRep")
+	@GetMapping("/list_buyRep")
 	public ResponseEntity<List<DetalleCompra>> listSalesRep() {
 		List<DetalleCompra> logs = BuyRepoDao.listBuyRep();
 
@@ -36,13 +36,13 @@ public class DetalleComprasController {
 		}
 	}
 
-	@PostMapping("/insert_salesRep")
+	@PostMapping("/insert_buyRep")
 	public ResponseEntity<DetalleCompra> insertSalesRep(@RequestBody DetalleCompra log) {
 		DetalleCompra newLog = BuyRepoDao.insertBuyRep(log);
 		return new ResponseEntity<>(newLog, HttpStatus.CREATED);
 	}
 
-	@DeleteMapping("/delete_salesRep/{id}")
+	@DeleteMapping("/delete_buyRep/{id}")
 	public ResponseEntity<Void> deleteSalesRep(@PathVariable Long id) {
 		String resultado = BuyRepoDao.deleteBuyRep(id);
 		if (resultado.equals("ELIMINACION EXITOSA")) {
@@ -52,14 +52,14 @@ public class DetalleComprasController {
 		}
 	}
 
-	@PutMapping("/edit_salesRep")
+	@PutMapping("/edit_buyRep")
 	public ResponseEntity<DetalleCompra> editSalesRep(@RequestBody DetalleCompra cli) {
 		DetalleCompra editBuyReport = BuyRepoDao.editBuyRep(cli);
 		return new ResponseEntity<DetalleCompra>(editBuyReport, HttpStatus.ACCEPTED);
 
 	}
 
-	@GetMapping("/list_salesRep/{id}")
+	@GetMapping("/list_buyRep/{id}")
 	public ResponseEntity<Optional> listCostumbyId(@PathVariable Long id) {
 		Optional<DetalleCompra> logs = BuyRepoDao.searchBuyRep(id);
 		if (logs == null) {
