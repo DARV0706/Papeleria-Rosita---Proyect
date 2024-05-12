@@ -34,7 +34,9 @@ public class ClienteDAO implements ClienteCRUD {
 	@Override
 	public Cliente insertCustom(Cliente cliente) {
 		// TODO Auto-generated method stub
-		return clientRepo.save(cliente);
+		Cliente cli = clientRepo.save(cliente);
+		clientRepo.changeStatus(cliente.getId_cliente(), 1);
+		return cli;
 	}
 
 	@Override

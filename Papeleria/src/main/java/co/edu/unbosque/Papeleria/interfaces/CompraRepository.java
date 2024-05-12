@@ -22,6 +22,10 @@ public interface CompraRepository extends JpaRepository<Compra, Integer>{
     @Query("UPDATE Compra c SET c.status = :status WHERE c.id_compra = :id")
     void deleteBuy(@Param("id") Long id, @Param("status") int status);
 	
-
+	@Transactional
+    @Modifying
+    @Query("UPDATE Compra c SET c.status = :status WHERE c.id_compra = :id")
+	void changeStatus(@Param("id") int i, @Param("status") int status);
+	
 
 }

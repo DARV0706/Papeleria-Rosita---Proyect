@@ -21,4 +21,11 @@ public interface ProductoRepository extends JpaRepository<Producto, String> {
 	
 	@Query("SELECT p FROM Producto p  WHERE p.status = 1")
 	List<Producto> productsActives();
+	
+	@Transactional
+    @Modifying
+    @Query("UPDATE Producto c SET c.status = :status WHERE c.id_producto = :id")
+	void changeStatus(@Param("id") String i, @Param("status") int status);
+	
+	
 }

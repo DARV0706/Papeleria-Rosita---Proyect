@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import co.edu.unbosque.Papeleria.interfaces.ProveedorRepository;
 import co.edu.unbosque.Papeleria.interfacesService.ProveedorCRUD;
 import co.edu.unbosque.Papeleria.modelo.Proveedor;
-
+@Service
 public class ProveedorDAO implements ProveedorCRUD {
 	
 	@Autowired
@@ -37,7 +38,9 @@ public class ProveedorDAO implements ProveedorCRUD {
 	@Override
 	public Proveedor insertProvider(Proveedor prov) {
 		// TODO Auto-generated method stub
-		return provRepo.save(prov); 
+		Proveedor pro = provRepo.save(prov);
+		provRepo.changeStatus(prov.getId_proveedor(), 1);
+		return pro; 
 
 	}
 

@@ -22,5 +22,10 @@ public interface ProveedorRepository extends JpaRepository<Proveedor, Long>{
 	
 	@Query("SELECT p FROM Proveedor p  WHERE p.status = 0")
 	List<Proveedor> providersDeleted();
+	
+	@Transactional
+    @Modifying
+    @Query("UPDATE Proveedor c SET c.status = :status WHERE c.id_proveedor = :id")
+	void changeStatus(@Param("id") int i, @Param("status") int status);
 
 }

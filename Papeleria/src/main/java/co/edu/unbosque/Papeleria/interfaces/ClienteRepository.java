@@ -23,5 +23,11 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 	
 	@Query("SELECT c FROM Cliente c  WHERE c.status = 0")
 	List<Cliente> customsDeleted();
+	
+	@Transactional
+    @Modifying
+    @Query("UPDATE Cliente c SET c.status = :status WHERE c.id_cliente = :id")
+	void changeStatus(@Param("id") int i, @Param("status") int status);
+	
 
 }

@@ -22,6 +22,10 @@ public interface DetalleVentasRepository extends JpaRepository<DetalleVentas, Lo
     @Query("UPDATE DetalleVentas c SET c.status = :status WHERE c.id_det_venta = :id")
     void deleteSalesReport(@Param("id") Long id, @Param("status") int status);
 	
-
+	@Transactional
+    @Modifying
+    @Query("UPDATE DetalleVentas c SET c.status = :status WHERE c.id_det_venta = :id")
+	void changeStatus(@Param("id") int i, @Param("status") int status);
+	
 
 }

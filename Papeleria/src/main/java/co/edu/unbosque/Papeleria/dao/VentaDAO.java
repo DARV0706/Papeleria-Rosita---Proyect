@@ -39,7 +39,9 @@ public class VentaDAO implements VentaCRUD {
 	@Override
 	public Venta insertSale(Venta sale) {
 		// TODO Auto-generated method stub
-		return salesRepo.save(sale);
+		Venta aux = salesRepo.save(sale);
+		salesRepo.changeStatus(sale.getId_venta(), 1);
+		return aux;
 	}
 
 	@Override

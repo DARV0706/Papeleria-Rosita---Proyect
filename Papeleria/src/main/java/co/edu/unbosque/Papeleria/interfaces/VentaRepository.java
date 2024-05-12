@@ -22,4 +22,10 @@ public interface VentaRepository extends JpaRepository<Venta, Long>{
     @Query("UPDATE Venta c SET c.status = :status WHERE c.id_venta = :id")
     void deleteSales(@Param("id") Long id, @Param("status") int status);
 	
+	@Transactional
+    @Modifying
+    @Query("UPDATE Venta c SET c.status = :status WHERE c.id_venta = :id")
+	void changeStatus(@Param("id") int i, @Param("status") int status);
+	
+	
 }

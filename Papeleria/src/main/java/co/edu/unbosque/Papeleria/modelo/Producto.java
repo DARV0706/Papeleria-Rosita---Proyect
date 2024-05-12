@@ -18,26 +18,22 @@ public class Producto {
 	private int costo_unitario;
 	@Column(name = "costo_total")
 	private int costo_total;
-	@Column(name = "Categoria_id_categoria")
-	private String categoria_id_categoria;
 	@Column(name = "descripcion")
 	private String descripcion;
 	@Column(name = "status")
 	private int status;
 	
-	public  Producto() {
+	public Producto() {
 		
 	}
 
-	public Producto(String id_producto, String nombre_producto, int iva, int costo_unitario, int costo_total,
-			String categoria_id_categoria, String descripcion) {
+	public Producto(String id_producto, String nombre_producto, int iva, int costo_unitario, int costo_total, String descripcion) {
 		super();
 		this.id_producto = id_producto;
 		this.nombre_producto = nombre_producto;
 		this.iva = iva;
 		this.costo_unitario = costo_unitario;
 		this.costo_total = costo_total;
-		this.categoria_id_categoria = categoria_id_categoria;
 		this.descripcion = descripcion;
 
 	}
@@ -80,14 +76,6 @@ public class Producto {
 
 	public void setCosto_total(int costo_total) {
 		this.costo_total = costo_total;
-	}
-
-	public String getCategoria_id_categoria() {
-		return categoria_id_categoria;
-	}
-
-	public void setCategoria_id_categoria(String categoria_id_categoria) {
-		this.categoria_id_categoria = categoria_id_categoria;
 	}
 
 	public String getDescripcion() {

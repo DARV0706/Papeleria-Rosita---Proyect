@@ -15,19 +15,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import co.edu.unbosque.Papeleria.dao.ProductoDAO;
 import co.edu.unbosque.Papeleria.dao.ProveedorDAO;
-import co.edu.unbosque.Papeleria.modelo.Cliente;
+import co.edu.unbosque.Papeleria.modelo.Producto;
 import co.edu.unbosque.Papeleria.modelo.Proveedor;
 
 @Controller
-@RequestMapping("/proveedor")
-public class ProveedorController {
+@RequestMapping("/producto")
+public class ProductoController {
 	@Autowired
-	private ProveedorDAO provDao;
+	private ProductoDAO prodDao;
 	
-	@GetMapping("/list_provider")
-    public ResponseEntity<List<Proveedor>> listProvider() {
-        List<Proveedor> logs = provDao.listProvider();
+	@GetMapping("/list_product")
+    public ResponseEntity<List<Producto>> listProduct() {
+        List<Producto> logs = prodDao.listProduct();
 
         if (logs.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -36,15 +37,15 @@ public class ProveedorController {
         }
     }
 	
-	@PostMapping("/insert_provider")
-    public ResponseEntity<Proveedor> insertProvider(@RequestBody Proveedor pov) {
-		Proveedor newProvider = provDao.insertProvider(pov);
-        return new ResponseEntity<>(newProvider, HttpStatus.OK);
+	@PostMapping("/insert_product")
+    public ResponseEntity<Producto> insertProduct(@RequestBody Producto pov) {
+		Producto newProduct = prodDao.insertProduct(pov);
+        return new ResponseEntity<>(newProduct, HttpStatus.OK);
     }
 	
-    @DeleteMapping("/delete_provider/{id}")
-    public ResponseEntity<Void> deleteProvider(@PathVariable Long id) {
-        String resultado = provDao.deleteProvider(id);
+    @DeleteMapping("/delete_product/{id}")
+    public ResponseEntity<Void> deleteProd(@PathVariable String id) {
+        String resultado = prodDao.deleteProduct(id);
         if (resultado.equals("ELIMINACIÓN EXITOSA")) {
             return ResponseEntity.noContent().build(); 
         } else {
@@ -52,16 +53,16 @@ public class ProveedorController {
         }
     }
     
-    @PutMapping("/edit_provider")
-    public ResponseEntity<Proveedor> editProvider(@RequestBody Proveedor pov){
-    	Proveedor editProvider = provDao.editProvider(pov);
-		return new ResponseEntity<Proveedor>(editProvider, HttpStatus.ACCEPTED);
+    @PutMapping("/edit_product")
+    public ResponseEntity<Producto> editProduct(@RequestBody Producto pov){
+    	Producto editProd = prodDao.editProduct(pov);
+		return new ResponseEntity<Producto>(editProd, HttpStatus.ACCEPTED);
     	
     }
     
-	@GetMapping("/list_provider/{id}")
-    public ResponseEntity<Optional> listProviderId(@PathVariable Long id) {
-        Optional<Proveedor> logs = provDao.searchProvider(id);
+	@GetMapping("/list_product/{id}")
+    public ResponseEntity<Optional> listProdbyId(@PathVariable String id) {
+        Optional<Producto> logs = prodDao.searchProduct(id);
 
         if (logs == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -69,6 +70,5 @@ public class ProveedorController {
             return new ResponseEntity<>( logs, HttpStatus.OK);
         }
     }
-	
 
 }

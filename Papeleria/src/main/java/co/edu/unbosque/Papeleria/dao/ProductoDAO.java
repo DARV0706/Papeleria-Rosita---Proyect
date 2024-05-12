@@ -35,7 +35,9 @@ public class ProductoDAO implements ProductoCRUD{
 	@Override
 	public Producto insertProduct(Producto product) {
 		// TODO Auto-generated method stub
-		return null;
+		Producto prod = productRepo.save(product);
+		productRepo.changeStatus(product.getId_producto(), 1);
+		return prod;
 	}
 
 	@Override
@@ -55,7 +57,6 @@ public class ProductoDAO implements ProductoCRUD{
 		prod.getIva(); // El usuario no calculará el IVA, lo hará la BD
 		prod.setCosto_unitario(product.getCosto_unitario());
 		prod.getCosto_total(); // Lo calcula la BD
-		prod.setCategoria_id_categoria(product.getCategoria_id_categoria());
 		prod.setDescripcion(product.getDescripcion());
 		return productRepo.save(prod);
 	}

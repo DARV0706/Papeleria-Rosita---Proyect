@@ -39,7 +39,9 @@ public class DetalleVentasDAO implements DetalleVentasCRUD{
 	@Override
 	public DetalleVentas insertSaleRep(DetalleVentas SaleRep) {
 		// TODO Auto-generated method stub
-		return saleRepRepo.save(SaleRep);
+		DetalleVentas aux = saleRepRepo.save(SaleRep);
+		saleRepRepo.changeStatus(SaleRep.getId_det_venta(), 1);
+		return aux;
 	}
 
 	@Override

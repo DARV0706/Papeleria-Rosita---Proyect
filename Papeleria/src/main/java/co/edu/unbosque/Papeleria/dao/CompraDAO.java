@@ -40,7 +40,9 @@ public class CompraDAO implements CompraCRUD{
 	@Override
 	public Compra insertBuy(Compra compra) {
 		// TODO Auto-generated method stub
-		return buyRepo.save(compra);
+		Compra aux = buyRepo.save(compra);
+		buyRepo.changeStatus(compra.getId_compra(), 1);
+		return aux;
 	}
 
 	@Override

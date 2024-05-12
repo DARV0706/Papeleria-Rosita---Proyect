@@ -11,7 +11,7 @@ public class Proveedor {
 	
 	@Id
 	private int id_proveedor;
-	@Column(name="tipo_identifacion")
+	@Column(name="tipo_identificacion")
 	private String tipo_identificacion;
 	@Column(name="razon_social")
 	private String razon_social;

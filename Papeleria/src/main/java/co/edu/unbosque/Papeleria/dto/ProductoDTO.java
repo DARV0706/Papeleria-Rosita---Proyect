@@ -6,7 +6,6 @@ public class ProductoDTO {
 	private int iva;
 	private int costo_unitario;
 	private int costo_total;
-	private String categoria_id_categoria;
 	private String descripcion;
 	private int status;
 	
@@ -14,15 +13,13 @@ public class ProductoDTO {
 		
 	}
 
-	public ProductoDTO(String id_producto, String nombre_producto, int iva, int costo_unitario, int costo_total,
-			String categoria_id_categoria, String descripcion ) {
+	public ProductoDTO(String id_producto, String nombre_producto, int iva, int costo_unitario, int costo_total, String descripcion ) {
 		super();
 		this.id_producto = id_producto;
 		this.nombre_producto = nombre_producto;
 		this.iva = iva;
 		this.costo_unitario = costo_unitario;
 		this.costo_total = costo_total;
-		this.categoria_id_categoria = categoria_id_categoria;
 		this.descripcion = descripcion;
 	
 	}
@@ -67,13 +64,6 @@ public class ProductoDTO {
 		this.costo_total = costo_total;
 	}
 
-	public String getCategoria_id_categoria() {
-		return categoria_id_categoria;
-	}
-
-	public void setCategoria_id_categoria(String categoria_id_categoria) {
-		this.categoria_id_categoria = categoria_id_categoria;
-	}
 
 	public String getDescripcion() {
 		return descripcion;
