@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="formStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <button class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+  
+    <nav class="menu">
+        <ul>
+            <li><a href="">Menu principal</a></li>
+            <li><a href="">Productos</a></li>
+            <li><a href="">Inventario</a></li>
+            <li><a href="">Ventas</a></li>
+            <li><a href="">Reportes</a></li>
+        </ul>
+    </nav>
+    <div class="arriba"></div>
+    <div class="imagen">
+        <img src="img/Portada.jpg">
+      </div>
+      <div class="logo">
+        <h1>Usuario:Gladis</h1>
+      </div>
+      <div class="menu-principal">
+        <h1>Inventario</h1>
+    </div>
+
+    <div class="table">
+        <div class="table_header">
+            <p>Inventario</p>
+            <div>
+                <input placeholder="Buscar">
+                <button class="agregar" onclick="openForm()">Agregar</button>
+            </div>
+        </div>
+        <div class="table_section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id Inventario</th>
+                        <th>Descripcion</th>
+                        <th>Cantidad</th>
+                        <th>Producto ID</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="Va el DTO">
+                        <td><span th:text="Llama la info">Id</span></td>
+                        <td><span th:text="Llama la info">descripcion</span></td>
+                        <td><span th:text="Llama la info">cant</span></td>
+                        <td><span th:text="Llama la info">producto_id</span></td>
+                        <td> 
+                            <button class="actualizar" onclick="openFormAct()">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            
+                            <button>
+                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
+                            </button>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="floatingForm" class="floating-form">
+        <h2>Agregar Inventario</h2>
+        <form>
+            <label for="id_invenatrio">Id invenatrio:</label>
+            <input type="text" id="id_invenatrio" name="id_invenatrio">
+            <label for="descripcion">Descrcipcion:</label>
+            <input type="text" id="descripcion" name="descripcion">
+            <label for="cant">Cantidad:</label>
+            <input type="number" id="cant" name="cant">
+            <label for="id_producto">Producto ID:</label>
+            <input type="number" id="id_producto" name="id_producto">
+            <button type="submit">Guardar</button>
+            <button type="button" onclick="closeForm()">Cancelar</button>
+        </form>
+    </div>
+
+    <script src="formScriptAgregar.js"></script>
+
+    <div id="floatingFormAct" class="floating-form">
+        <h2>Actualizar Inventario</h2>
+        <form>
+            <label for="id_invenatrio">Id invenatrio:</label>
+            <input type="text" id="id_invenatrio" name="id_invenatrio">
+            <label for="descripcion">Descrcipcion:</label>
+            <input type="text" id="descripcion" name="descripcion">
+            <label for="cant">Cantidad:</label>
+            <input type="number" id="cant" name="cant">
+            <label for="id_producto">Producto ID:</label>
+            <input type="number" id="id_producto" name="id_producto">
+            <button type="submit">Actualizar</button>
+            <button type="button" onclick="closeFormAct()">Cancelar</button>
+        </form>
+    </div>
+    <script src="formScriptAct.js"></script>
+</body> 
+</html>

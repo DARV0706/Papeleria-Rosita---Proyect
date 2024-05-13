@@ -29,9 +29,7 @@ public class InventarioController {
 	@GetMapping("/list_inventory")
 	public String mostrar_inventario(Model model) {
 		List<Inventario> inventarios = inventoryDao.listInventory();
-
 		System.out.println("Lista de inventarios: " + inventarios);
-		
 		model.addAttribute("list_inventory", inventarios);
 		return "formInventario";
 	}
@@ -69,5 +67,10 @@ public class InventarioController {
             return new ResponseEntity<>( logs, HttpStatus.OK);
         }
     }
+	
+	@GetMapping("/")
+	public String Login() {
+		return "MenuRosita";
+	}
 	
 }
