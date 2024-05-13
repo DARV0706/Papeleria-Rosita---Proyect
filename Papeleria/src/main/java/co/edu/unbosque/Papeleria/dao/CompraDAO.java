@@ -86,28 +86,13 @@ public class CompraDAO implements CompraCRUD<CompraDTO>{
 
 	@Override
 	public int editBuy(CompraDTO compraDTO) {
-		String sql = "UPDATE compra SET id_compra = ?, fecha_compra = ?, fecha_llegada = ?, tota_compra = ?, Proveedor_id_proveedor = ?, status = ? "
-				+ "WHERE id_compra = ? ";
-		return jdbctemple1.execute(sql, (PreparedStatementCallback<Integer>) preparedStatement -> {
-			preparedStatement.setLong(1, compraDTO.getId_compra());
-			preparedStatement.setString(2, compraDTO.getFecha_compra());
-			preparedStatement.setString(3, compraDTO.getFecha_llegada());
-			preparedStatement.setLong(4, compraDTO.getTotal_compra());
-			preparedStatement.setLong(5, compraDTO.getProveedor_id_proveedor());
-			preparedStatement.setLong(6, compraDTO.getStatus());
-
-			return preparedStatement.execute() ? 1 : 0;
-		});
+	    String sql = "UPDATE compra SET fecha_compra = ?, fecha_llegada = ?, total_compra = ?, Proveedor_id_proveedor = ?, status = ? "
+	            + "WHERE id_compra = ?";
+	    return jdbctemple1.update(sql, compraDTO.getFecha_compra(), compraDTO.getFecha_llegada(), compraDTO.getTotal_compra(),
+	            compraDTO.getProveedor_id_proveedor(), compraDTO.getStatus(), compraDTO.getId_compra());
 	}
 
-	@Override
-	public int changeStatus(CompraDTO compraDTO) {
-		// TODO Auto-generated method stub
-		String sql = "UPDATE compra SET status = 1 WHERE id = ? ";
-	    int aux = jdbctemple1.update(sql, compraDTO.getStatus(), compraDTO.getId_compra());
 
-		return 1;
-	}
 	
 	private int calcularNumeroMaximo() {
         String sql = "SELECT MAX(id_compra) FROM compra";
