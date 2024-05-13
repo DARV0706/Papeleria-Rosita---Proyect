@@ -1,15 +1,15 @@
 package co.edu.unbosque.Papeleria.interfacesService;
 
 import java.util.List;
-import java.util.Optional;
 
-import co.edu.unbosque.Papeleria.modelo.Producto;
+import co.edu.unbosque.Papeleria.dto.ProductoDTO;
+
 
 public interface ProductoCRUD {
-	public List<Producto> listProduct();
-	public Optional<Producto> searchProduct(String id);
-	public String deleteProduct(String id);
-	public Producto insertProduct(Producto product);
-	public Producto editProduct(Producto product );
+	public List<ProductoDTO> listProduct();
+	public ProductoDTO searchProduct(String id);
+	public int deleteProduct(String id);
+	public int insertProduct(ProductoDTO product);
+	public int editProduct(ProductoDTO product );
 
 }

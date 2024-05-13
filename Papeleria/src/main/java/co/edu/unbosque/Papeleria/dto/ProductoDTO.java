@@ -9,11 +9,10 @@ public class ProductoDTO {
 	private String descripcion;
 	private int status;
 	
-	public void ProductoDTO() {
-		
-	}
 
-	public ProductoDTO(String id_producto, String nombre_producto, int iva, int costo_unitario, int costo_total, String descripcion ) {
+	
+	public ProductoDTO(String id_producto, String nombre_producto, int iva, int costo_unitario, int costo_total,
+			String descripcion, int status) {
 		super();
 		this.id_producto = id_producto;
 		this.nombre_producto = nombre_producto;
@@ -21,7 +20,11 @@ public class ProductoDTO {
 		this.costo_unitario = costo_unitario;
 		this.costo_total = costo_total;
 		this.descripcion = descripcion;
-	
+		this.status = status;
+	}
+
+	public ProductoDTO() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getId_producto() {
@@ -73,6 +76,14 @@ public class ProductoDTO {
 		this.descripcion = descripcion;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 
 }
+

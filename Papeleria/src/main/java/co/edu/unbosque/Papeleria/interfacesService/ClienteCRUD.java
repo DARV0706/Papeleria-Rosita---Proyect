@@ -1,18 +1,18 @@
 package co.edu.unbosque.Papeleria.interfacesService;
 
 import java.util.List;
-import java.util.Optional;
 
-import co.edu.unbosque.Papeleria.modelo.Cliente;
+import co.edu.unbosque.Papeleria.dto.ClienteDTO;
+
 
 public interface ClienteCRUD {
 	
-	public List<Cliente> listCustom();
-	public Optional<Cliente> searchCustom(int id);
-	public String deleteCustom(Long id);
-	public Cliente insertCustom(Cliente cliente);
-	public Cliente editCustom(Cliente cliente);
-	public List<Cliente> listDeletedCustom();
+	public List<ClienteDTO> listCustom();
+	public ClienteDTO searchCustom(int id);
+	public int deleteCustom(int id);
+	public int insertCustom(ClienteDTO cliente);
+	public int editCustom(ClienteDTO cliente);
+	public List<ClienteDTO> listDeletedCustom();
 	
 
 }

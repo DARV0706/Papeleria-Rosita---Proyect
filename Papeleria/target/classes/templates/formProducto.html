@@ -51,29 +51,27 @@
                         <th>Iva</th>
                         <th>Costo Unitario</th>
                         <th>Costo Total</th>
-                        <th>Categoria</th>
                         <th>Descripcion</th>
                         <th>Status</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="Va el DTO">
-                        <td><span th:text="Llama la info">Id</span></td>
-                        <td><span th:text="Llama la info">nombre</span></td>
-                        <td><span th:text="Llama la info">iva</span></td>
-                        <td><span th:text="Llama la info">C/unitario</span></td>
-                        <td><span th:text="Llama la info">C/Total</span></td>
-                        <td><span th:text="Llama la info">Categoria</span></td>
-                        <td><span th:text="Llama la info">Descripcion</span></td>
-                        <td><span th:text="Llama la info">Status</span></td>
+				 <tr th:each="productoDTO: ${listaProducto}">
+               		<td th:text="${productoDTO.id_producto}"></td>
+               		<td th:text="${productoDTO.nombre_producto}"></td>
+               		<td th:text="${productoDTO.iva}"></td>
+               		<td th:text="${productoDTO.costo_unitario}"></td>
+               		<td th:text="${productoDTO.costo_total}"></td>
+               		<td th:text="${productoDTO.descripcion}"></td>
+               		<td th:text="${productoDTO.status}"></td>
                         <td> 
-                            <button class="actualizar" onclick="openFormAct()">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                            <button class="actualizar" >
+                                <i class="fa-solid fa-pen-to-square" th:href="@{/editarProducto/{id}(id=${productoDTO.id_producto})}"></i>
                             </button>
                             
                             <button>
-                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
+                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash" th:href="@{/borrarProducto/{id}(id=${productoDTO.id_producto})}"></i></a>
                             </button>
                             
                         </td>

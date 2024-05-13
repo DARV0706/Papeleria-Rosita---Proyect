@@ -58,21 +58,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="Va el DTO">
-                        <td><span th:text="Llama la info">Id</span></td>
-                        <td><span th:text="Llama la info">cc</span></td>
-                        <td><span th:text="Llama la info">nit</span></td>
-                        <td><span th:text="Llama la info">3221151</span></td>
-                        <td><span th:text="Llama la info">u el bosque</span></td>
-                        <td><span th:text="Llama la info">51651</span></td>
-                        <td><span th:text="Llama la info">Activo</span></td>
+                    <tr th:each="clienteDTO: ${listaClientes}">
+                        <td th:text="${clienteDTO.id_cliente}"></td>
+                        <td th:text="${clienteDTO.tipo_identificacion}"></td>
+                        <td th:text="${clienteDTO.razon_social}"></td>
+                        <td th:text="${clienteDTO.telefono}"></td>
+                        <td th:text="${clienteDTO.direccion}"></td>
+                        <td th:text="${clienteDTO.saldo_pendiente}"></td>
+                        <td th:text="${clienteDTO.status}"></td>
                         <td> 
-                            <button class="actualizar" onclick="openFormAct()">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                            <button class="actualizar" >
+                                <i class="fa-solid fa-pen-to-square" th:href="@{/editarCliente/{id}(id=${clienteDTO.id_cliente})}"></i>
                             </button>
                             
                             <button>
-                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
+                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash" th:href="@{/borrarCliente/{id}(id=${clienteDTO.id_cliente})}"></i></a>
                             </button>
                             
                         </td>

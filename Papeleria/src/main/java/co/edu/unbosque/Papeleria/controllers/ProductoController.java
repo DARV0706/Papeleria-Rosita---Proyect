@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.edu.unbosque.Papeleria.dao.ProductoDAO;
 import co.edu.unbosque.Papeleria.dao.ProveedorDAO;
-import co.edu.unbosque.Papeleria.modelo.Producto;
-import co.edu.unbosque.Papeleria.modelo.Proveedor;
+import co.edu.unbosque.Papeleria.dto.ProductoDTO;
+
 
 @Controller
 @RequestMapping("/producto")
@@ -26,49 +28,42 @@ public class ProductoController {
 	@Autowired
 	private ProductoDAO prodDao;
 	
-	@GetMapping("/list_product")
-    public ResponseEntity<List<Producto>> listProduct() {
-        List<Producto> logs = prodDao.listProduct();
-
-        if (logs.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(logs, HttpStatus.OK);
-        }
-    }
+	@GetMapping("/listaProducto")
+	public String listarFestival(Model modelo) {
+	  List<ProductoDTO> lista = prodDao.listProduct();
+	  modelo.addAttribute("listaProducto", lista);
+	  return "formProducto";
+	}
 	
-	@PostMapping("/insert_product")
-    public ResponseEntity<Producto> insertProduct(@RequestBody Producto pov) {
-		Producto newProduct = prodDao.insertProduct(pov);
-        return new ResponseEntity<>(newProduct, HttpStatus.OK);
-    }
+	@GetMapping("/insertarProducto")
+	public String insertar(Model model) {
+		model.addAttribute("producto", new ProductoDTO());
+		return "CrearProducto";
+	}
 	
-    @DeleteMapping("/delete_product/{id}")
-    public ResponseEntity<Void> deleteProd(@PathVariable String id) {
-        String resultado = prodDao.deleteProduct(id);
-        if (resultado.equals("ELIMINACIÓN EXITOSA")) {
-            return ResponseEntity.noContent().build(); 
-        } else {
-            return ResponseEntity.notFound().build(); 
-        }
-    }
-    
-    @PutMapping("/edit_product")
-    public ResponseEntity<Producto> editProduct(@RequestBody Producto pov){
-    	Producto editProd = prodDao.editProduct(pov);
-		return new ResponseEntity<Producto>(editProd, HttpStatus.ACCEPTED);
-    	
-    }
-    
-	@GetMapping("/list_product/{id}")
-    public ResponseEntity<Optional> listProdbyId(@PathVariable String id) {
-        Optional<Producto> logs = prodDao.searchProduct(id);
-
-        if (logs == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>( logs, HttpStatus.OK);
-        }
-    }
+	@PostMapping("/guardarProducto")
+	public String guardar(@ModelAttribute ProductoDTO productoDTO) {
+		prodDao.insertProduct(productoDTO);
+		return "redirect:/listaProducto";
+	}
+	
+	@GetMapping("/editarProducto/{id}")
+	public String editar(@PathVariable String id, Model model) {
+		ProductoDTO productoDTO = prodDao.searchProduct(id);
+		model.addAttribute("producto", productoDTO);
+		return "EditarFestival";
+	}
+	
+	@PostMapping("/actualizarProducto")
+	public String actualizar(@ModelAttribute ProductoDTO productoDTO) {
+		prodDao.editProduct(productoDTO);
+		return "redirect:/listaProducto";
+	}
+	
+	@GetMapping("/borrarProducto/{id}")
+	public String borrarpelicula(@PathVariable String id) {
+		prodDao.deleteProduct(id);
+		return "redirect:/listaProducto";
+	}
 
 }
