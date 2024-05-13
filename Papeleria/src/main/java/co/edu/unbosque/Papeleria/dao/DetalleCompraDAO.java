@@ -9,13 +9,26 @@ import org.springframework.stereotype.Service;
 import co.edu.unbosque.Papeleria.interfaces.DetalleCompraRepository;
 import co.edu.unbosque.Papeleria.interfacesService.DetalleCompraCRUD;
 import co.edu.unbosque.Papeleria.modelo.DetalleCompra;
+import co.edu.unbosque.Papeleria.modelo.DetalleCompraId;
 
 @Service
 public class DetalleCompraDAO implements DetalleCompraCRUD{
 	
 	@Autowired 
-	private DetalleCompraRepository buyRepo; 
-	
+	private DetalleCompraRepository buyRepo; 	
+
+	@Override
+	public Optional<DetalleCompra> searchBuyRep(DetalleCompraId id) {
+		// TODO Auto-generated method stub
+		return buyRepo.findById(id);
+	}
+
+	@Override
+	public String deleteBuyRep(DetalleCompraId id) {
+		buyRepo.deleteById(id);
+		return "Eliminacion realizada";
+	}
+
 	@Override
 	public List<DetalleCompra> listBuyRep() {
 		// TODO Auto-generated method stub
@@ -23,29 +36,15 @@ public class DetalleCompraDAO implements DetalleCompraCRUD{
 	}
 
 	@Override
-	public Optional<DetalleCompra> searchBuyRep(Integer id) {
-		// TODO Auto-generated method stub
-		return buyRepo.findById(id);
-	}
-
-	@Override
-	public String deleteBuyRep(Integer id) {
-		// TODO Auto-generated method stub
-		buyRepo.deleteById(id);
-		return "Eliminacion realizada";
-	}
-
-	@Override
 	public DetalleCompra insertBuyRep(DetalleCompra BuyRep) {
 		// TODO Auto-generated method stub
-		
 		return buyRepo.save(BuyRep);
 	}
 
 	@Override
 	public DetalleCompra editBuyRep(DetalleCompra BuyRep) {
-		// TODO Auto-generated method stub
-		DetalleCompra aux = buyRepo.findById((Integer) BuyRep.getId_det_compra()).orElse(null);
+		DetalleCompraId aux2 = new DetalleCompraId(BuyRep.getId_det_compra(), BuyRep.getCompra_id_compra(), BuyRep.getProducto_id_producto());
+		DetalleCompra aux = buyRepo.findById(aux2).orElse(null);
 		aux.getId_det_compra();
 		aux.setPrecio(BuyRep.getPrecio());
 		aux.setCantidad(BuyRep.getCantidad());

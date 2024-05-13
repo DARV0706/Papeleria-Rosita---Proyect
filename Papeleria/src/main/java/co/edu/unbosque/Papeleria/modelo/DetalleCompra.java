@@ -3,14 +3,16 @@ package co.edu.unbosque.Papeleria.modelo;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="detalle_compra")
+@IdClass(DetalleCompraId.class)
 public class DetalleCompra {
 	@Id
 	private int id_det_compra;
-	
+
 	@Column(name="precio")
 	private int precio;
 	
@@ -23,9 +25,11 @@ public class DetalleCompra {
 	@Column(name="saldo_pendiente")
 	private int saldo_pendiente;
 	
+	@Id
 	@Column(name="Compra_id_compra")
 	private int compra_id_compra;
 	
+	@Id
 	@Column(name="Producto_id_producto")
 	private String producto_id_producto;
 	
