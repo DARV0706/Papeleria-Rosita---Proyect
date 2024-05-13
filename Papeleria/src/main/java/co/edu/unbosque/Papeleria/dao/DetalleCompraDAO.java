@@ -1,60 +1,103 @@
 package co.edu.unbosque.Papeleria.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.stereotype.Service;
 
-import co.edu.unbosque.Papeleria.interfaces.DetalleCompraRepository;
+import co.edu.unbosque.Papeleria.dto.CompraDTO;
+import co.edu.unbosque.Papeleria.dto.DetalleCompraDTO;
 import co.edu.unbosque.Papeleria.interfacesService.DetalleCompraCRUD;
-import co.edu.unbosque.Papeleria.modelo.DetalleCompra;
-import co.edu.unbosque.Papeleria.modelo.DetalleCompraId;
 
 @Service
-public class DetalleCompraDAO implements DetalleCompraCRUD{
+public class DetalleCompraDAO implements DetalleCompraCRUD<DetalleCompraDTO>{
 	
 	@Autowired 
-	private DetalleCompraRepository buyRepo; 	
+	private JdbcTemplate jdbctemple1;
 
 	@Override
-	public Optional<DetalleCompra> searchBuyRep(DetalleCompraId id) {
-		// TODO Auto-generated method stub
-		return buyRepo.findById(id);
+	public List<DetalleCompraDTO> listBuyRep() {
+		String sql = "SELECT * FROM detalle_compra";
+		List<DetalleCompraDTO> lista = jdbctemple1.query(sql, BeanPropertyRowMapper.newInstance(DetalleCompraDTO.class));
+		return lista;
+	}
+
+
+	@Override
+	public int deleteBuyRep(int id, int id2, String id3) {
+	    String aux = "SELECT COUNT(*) FROM detalle_compra WHERE id_det_compra = ? AND Compra_id_compra = ? AND Producto_id_producto = ? "
+	            + "AND status = 1";
+	    int contador = jdbctemple1.queryForObject(aux, new Object[]{id, id2, id3}, Integer.class);
+
+	    if (contador > 0) {
+	        String sql = "UPDATE detalle_compra SET status = 0 WHERE id_det_compra = ? "
+	                + "AND Compra_id_compra = ? AND Producto_id_producto = ?";
+	        int aux2 = jdbctemple1.update(sql, id, id2, id3);
+
+	        if (aux2 > 0) {
+	            return 1;
+	        } else {
+	            return -1;
+	        }
+	    } else {
+	        return 0;
+	    }
 	}
 
 	@Override
-	public String deleteBuyRep(DetalleCompraId id) {
-		buyRepo.deleteById(id);
-		return "Eliminacion realizada";
-	}
-
-	@Override
-	public List<DetalleCompra> listBuyRep() {
-		// TODO Auto-generated method stub
-		return buyRepo.findAll();
-	}
-
-	@Override
-	public DetalleCompra insertBuyRep(DetalleCompra BuyRep) {
-		// TODO Auto-generated method stub
-		return buyRepo.save(BuyRep);
-	}
-
-	@Override
-	public DetalleCompra editBuyRep(DetalleCompra BuyRep) {
-		DetalleCompraId aux2 = new DetalleCompraId(BuyRep.getId_det_compra(), BuyRep.getCompra_id_compra(), BuyRep.getProducto_id_producto());
-		DetalleCompra aux = buyRepo.findById(aux2).orElse(null);
-		aux.getId_det_compra();
-		aux.setPrecio(BuyRep.getPrecio());
-		aux.setCantidad(BuyRep.getCantidad());
-		aux.setMonto_total(BuyRep.getMonto_total());
-		aux.setSaldo_pendiente(BuyRep.getSaldo_pendiente());
-		aux.setCompra_id_compra(BuyRep.getCompra_id_compra());
-		aux.setProducto_id_producto(BuyRep.getProducto_id_producto());
+	public int insertBuyRep(DetalleCompraDTO BuyRep) {
+		String sql = "INSERT INTO detalle_compra (id_det_compra, precio, cantidad,monto_total,Compra_id_proveedor, Producto_id_producto)"
+				+ "VALUES(?,?,?,?,?,?)";
 		
-		return buyRepo.save(aux);
+	    int aux = jdbctemple1.update(sql, BuyRep.getId_det_compra(), BuyRep.getPrecio(), BuyRep.getCantidad(),
+	    		BuyRep.getMonto_total(), BuyRep.getCompra_id_compra(), BuyRep.getProducto_id_producto());;
+	    return aux;
 	}
+
+	@Override
+	public int editBuyRep(DetalleCompraDTO BuyRep) {
+		String sql = "UPDATE detalle_compra id_det_compra=?, precio=?, cantidad=?,monto_total=?,Compra_id_compra=?, Producto_id_producto=? "
+				+ "WHERE id_det_compra = ? AND Compra_id_compra = ? AND Producto_id_producto = ? ";
+		return jdbctemple1.execute(sql, (PreparedStatementCallback<Integer>) preparedStatement -> {
+			preparedStatement.setLong(1, BuyRep.getId_det_compra());
+			preparedStatement.setLong(2, BuyRep.getPrecio());
+			preparedStatement.setLong(3, BuyRep.getCantidad());
+			preparedStatement.setLong(4, BuyRep.getMonto_total());
+			preparedStatement.setLong(5, BuyRep.getCompra_id_compra());
+			preparedStatement.setString(6, BuyRep.getProducto_id_producto());
+
+			return preparedStatement.execute() ? 1 : 0;
+		});
+	}
+	
+	private int calcularNumeroMaximo() {
+        String sql = "SELECT MAX(id_det_com) FROM detalle_compra";
+        int r = jdbctemple1.queryForObject(sql, Integer.class) + 1;
+        return r ;
+    }
+
+	@Override
+	public int changeStatus(DetalleCompraDTO BuyRep) {
+		String sql = "UPDATE detalle_compra SET status = 1 WHERE id_det_compra = ? ";
+	    int aux = jdbctemple1.update(sql, BuyRep.getStatus(), BuyRep.getId_det_compra());
+		return 1;
+	}
+
+	@Override
+	public DetalleCompraDTO searchBuyRep(int id, int id2, String id3) {
+	    String sql = "SELECT * FROM compra WHERE id_det_compra = ? AND Compra_id_compra = ? AND Producto_id_producto = ? AND status = 1";
+	    DetalleCompraDTO compra = jdbctemple1.queryForObject(sql, new Object[]{id}, BeanPropertyRowMapper.newInstance(DetalleCompraDTO.class));
+	    return compra;
+	}
+
+	
 	
 
 }

@@ -1,5 +1,7 @@
 package co.edu.unbosque.Papeleria.dto;
 
+import java.util.Date;
+
 public class CompraDTO {
 
 	private int id_compra;
@@ -8,14 +10,14 @@ public class CompraDTO {
 	private int total_compra;
 	private int saldo_pendiente;
 	private int proveedor_id_proveedor;
-	private int status;
+	private int status;	
 	
 	public CompraDTO() {
 		
 	}
 
 	public CompraDTO(int id_compra, String fecha_compra, String fecha_llegada, int total_compra, int saldo_pendiente,
-			int proveedor_id_proveedor) {
+			int proveedor_id_proveedor, int status) {
 		super();
 		this.id_compra = id_compra;
 		this.fecha_compra = fecha_compra;
@@ -23,6 +25,7 @@ public class CompraDTO {
 		this.total_compra = total_compra;
 		this.saldo_pendiente = saldo_pendiente;
 		this.proveedor_id_proveedor = proveedor_id_proveedor;
+		this.status = status;
 	}
 
 	public int getId_compra() {
@@ -71,6 +74,14 @@ public class CompraDTO {
 
 	public void setProveedor_id_proveedor(int proveedor_id_proveedor) {
 		this.proveedor_id_proveedor = proveedor_id_proveedor;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	
