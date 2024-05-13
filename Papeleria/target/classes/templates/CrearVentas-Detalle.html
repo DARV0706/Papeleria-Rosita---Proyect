@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios en una página</title>
+    <link rel="stylesheet" href="formFormularios.css">
+<body>
+    <body>
+        <h1>Registros de ventas</h1>
+        <div id="floatingFormAct1" class="floating-form" style="display: flex;">
+            <h2>Registrar Venta</h2>
+            <form id="formulario1">
+                <label for="f_venta">Fecha Venta:</label>
+                <input type="datetime" id="f_venta" name="f_venta" class="input1">
+                <label for="totalizado">Totalizado:</label>
+                <input type="number" id="totalizado" name="totalizado" class="input1">
+                <label for="id_cliente">IdCliente:</label>
+                <input type="number" id="id_cliente" name="id_cliente" class="input1">
+    
+                <button type="button" onclick="mostrarFormulario2()">Guardar</button>
+            </form>
+        </div>
+    
+        <div id="floatingFormAct2" class="floating-form2" style="display: none;">
+            <h2>Registrar Detalle Venta</h2>
+            <form id="formulario2">
+                <label for="id_venta">Id Venta:</label>
+                <input type="number" id="id_venta" name="id_venta" class="input1">
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" class="input1">
+                <label for="cant">Cantidad:</label>
+                <input type="number" id="cant" name="cant" class="input1">
+                <label for="monto">Precio Total * Cantidad:</label>
+                <input type="number" id="monto" name="monto" class="input1" >
+                <label for="id_producto">IdProducto:</label>
+                <input type="text" id="id_producto" name="id_producto" class="input1">
+                <button type="submit">Finalizar</button>
+                <button type="button" onclick="mostrarFormulario1()">Cancelar</button>
+                <button type="submit">Agregar</button>
+            </form>
+        </div>
+    
+        <script>
+            function mostrarFormulario2() {
+                document.getElementById("floatingFormAct1").style.display = "none";
+                document.getElementById("floatingFormAct2").style.display = "flex";
+            }
+    
+            function mostrarFormulario1() {
+                document.getElementById("floatingFormAct2").style.display = "none";
+                document.getElementById("floatingFormAct1").style.display = "flex";
+            }
+        </script>
+    </body>
+</html>

@@ -14,10 +14,12 @@
   
     <nav class="menu">
         <ul>
-            <li><a href="">Menu principal</a></li>
-            <li><a href="">Productos</a></li>
-            <li><a href="">Inventario</a></li>
-            <li><a href="">Ventas</a></li>
+            <li><a href="MenuRosita.html">Menu principal</a></li>
+            <li><a href="formProducto.html">Productos</a></li>
+            <li><a href="formProveedores.html">Proveedores</a></li>
+            <li><a href="formInventario.html">Inventario</a></li>
+            <li><a href="formCompras.html">Compras</a></li>
+            <li><a href="formVentas.html">Ventas</a></li>
             <li><a href="">Reportes</a></li>
         </ul>
     </nav>
@@ -72,39 +74,5 @@
             </table>
         </div>
     </div>
-    <div id="floatingForm" class="floating-form">
-        <h2>Agregar Inventario</h2>
-        <form>
-            <label for="id_invenatrio">Id invenatrio:</label>
-            <input type="text" id="id_invenatrio" name="id_invenatrio">
-            <label for="descripcion">Descrcipcion:</label>
-            <input type="text" id="descripcion" name="descripcion">
-            <label for="cant">Cantidad:</label>
-            <input type="number" id="cant" name="cant">
-            <label for="id_producto">Producto ID:</label>
-            <input type="number" id="id_producto" name="id_producto">
-            <button type="submit">Guardar</button>
-            <button type="button" onclick="closeForm()">Cancelar</button>
-        </form>
-    </div>
-
-    <script src="formScriptAgregar.js"></script>
-
-    <div id="floatingFormAct" class="floating-form">
-        <h2>Actualizar Inventario</h2>
-        <form>
-            <label for="id_invenatrio">Id invenatrio:</label>
-            <input type="text" id="id_invenatrio" name="id_invenatrio">
-            <label for="descripcion">Descrcipcion:</label>
-            <input type="text" id="descripcion" name="descripcion">
-            <label for="cant">Cantidad:</label>
-            <input type="number" id="cant" name="cant">
-            <label for="id_producto">Producto ID:</label>
-            <input type="number" id="id_producto" name="id_producto">
-            <button type="submit">Actualizar</button>
-            <button type="button" onclick="closeFormAct()">Cancelar</button>
-        </form>
-    </div>
-    <script src="formScriptAct.js"></script>
 </body> 
 </html>

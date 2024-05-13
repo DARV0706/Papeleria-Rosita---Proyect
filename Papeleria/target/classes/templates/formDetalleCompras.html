@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="formStyleCompras.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <button class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+  
+    <nav class="menu">
+        <ul>
+            <li><a href="MenuRosita.html">Menu principal</a></li>
+            <li><a href="formProducto.html">Productos</a></li>
+            <li><a href="formProveedores.html">Proveedores</a></li>
+            <li><a href="formInventario.html">Inventario</a></li>
+            <li><a href="formCompras.html">Compras</a></li>
+            <li><a href="formVentas.html">Ventas</a></li>
+            <li><a href="">Reportes</a></li>
+        </ul>
+    </nav>
+    <div class="arriba"></div>
+    <div class="imagen">
+        <img src="img/Portada.jpg">
+      </div>
+      <div class="logo">
+        <h1>Usuario:Rosita</h1>
+      </div>
+      <div class="menu-principal">
+        <h1>Detalle Compras</h1>
+    </div>
+
+    <div class="table">
+        <div class="table_header">
+            <p>Detalle Compras</p>
+            <div>
+                <input placeholder="Buscar">
+                <button class="agregar" onclick="openForm()">Agregar</button>
+            </div>
+        </div>
+        <div class="table_section">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id Detalle Compra:</th>
+                        <th>Precio:</th>
+                        <th>Cantidad:</th>
+                        <th>Monto Total:</th>
+                        <th>Id producto:</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="Va el DTO">
+                        <td><span th:text="Llama la info"></span></td>
+                        <td><span th:text="Llama la info"></span></td>
+                        <td><span th:text="Llama la info"></span></td>
+                        <td><span th:text="Llama la info"></span></td>
+                        <td><span th:text="Llama la info"></span></td>
+                        <td> 
+                            <button class="actualizar" onclick="openFormAct()">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            
+                            <button>
+                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
+                            </button>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body> 
+</html>

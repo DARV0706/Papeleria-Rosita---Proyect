@@ -304,7 +304,7 @@ td{
 .floating-form input[type="text"],
 .floating-form input[type="number"],
 .floating-form input[type="datetime"] {
-    width: calc(30% - 45px);
+    width: calc(30% - 40px);
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;

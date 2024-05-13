@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link rel="stylesheet" href="css/formStyleCompras.css">
+    <link rel="stylesheet" href="formStyleCompras.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
@@ -51,6 +51,7 @@
                         <th>Totalizado</th>
                         <th>Saldo</th>
                         <th>ID Cliente</th>
+                        <th>Status</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -61,6 +62,7 @@
                         <td><span th:text="Llama la info">Total</span></td>
                         <td><span th:text="Llama la info">Saldo</span></td>
                         <td><span th:text="Llama la info">Id cliente</span></td>
+                        <td><span th:text="Llama la info">Status</span></td>
                         <td> 
                             <button class="actualizar" onclick="openFormAct()">
                                 <i class="fa-solid fa-pen-to-square"></i>
@@ -76,77 +78,5 @@
             </table>
         </div>
     </div>
-    <div id="floatingForm" class="floating-form">
-        <h2>Agregar Venta</h2>
-        <form>
-            <div class="columna1">
-                <label for="id_venta">Id Venta:</label>
-                <input type="text" id="id_venta" name="id_venta" class="input1">
-                <label for="f_venta">Fecha Venta:</label>
-                <input type="datetime" id="f_venta" name="f_venta" class="input1">
-                <label for="totalizado">Totalizado:</label>
-                <input type="number" id="totalizado" name="totalizado" class="input1">
-                <label for="saldo">Saldo:</label>
-                <input type="number" id="saldo" name="saldo" class="input1">
-                <label for="id_cliente">IdCliente:</label>
-                <input type="number" id="id_cliente" name="id_cliente" class="input1">
-            </div>
-            <div class="columna2">
-                <label for="id_det_venta">Id Detalle Venta:</label>
-                <input type="number" id="id_det_venta" name="id_det_venta" class="input1">
-                <label for="precio">Precio:</label>
-                <input type="number" id="precio" name="precio" class="input1">
-                <label for="cant">Cantidad:</label>
-                <input type="number" id="cant" name="cant" class="input1">
-                <label for="monto">Monto Total:</label>
-                <input type="number" id="monto" name="monto" class="input1">
-                <label for="s_pendiente">Saldo Pendiente:</label>
-                <input type="number" id="s_pendiente" name="s_pendiente" class="input1">
-                <label for="id_producto">IdProducto:</label>
-                <input type="text" id="id_producto" name="id_producto" class="input1">
-            </div>
-
-            <button type="submit">Guardar</button>
-            <button type="button" onclick="closeForm()">Cancelar</button>
-        </form>
-    </div>
-
-    <script src="formScriptAgregar.js"></script>
-
-    <div id="floatingFormAct" class="floating-form">
-        <h2>Actualizar Venta</h2>
-        <form>
-            <div class="columna1">
-                <label for="id_venta">Id Venta:</label>
-                <input type="text" id="id_venta" name="id_venta" class="input1">
-                <label for="f_venta">Fecha Venta:</label>
-                <input type="datetime" id="f_venta" name="f_venta" class="input1">
-                <label for="totalizado">Totalizado:</label>
-                <input type="number" id="totalizado" name="totalizado" class="input1">
-                <label for="saldo">Saldo:</label>
-                <input type="number" id="saldo" name="saldo" class="input1">
-                <label for="id_cliente">IdCliente:</label>
-                <input type="number" id="id_cliente" name="id_cliente" class="input1">
-            </div>
-            <div class="columna2">
-                <label for="id_det_venta">Id Detalle Venta:</label>
-                <input type="number" id="id_det_venta" name="id_det_venta" class="input1">
-                <label for="precio">Precio:</label>
-                <input type="number" id="precio" name="precio" class="input1">
-                <label for="cant">Cantidad:</label>
-                <input type="number" id="cant" name="cant" class="input1">
-                <label for="monto">Monto Total:</label>
-                <input type="number" id="monto" name="monto" class="input1">
-                <label for="s_pendiente">Saldo Pendiente:</label>
-                <input type="number" id="s_pendiente" name="s_pendiente" class="input1">
-                <label for="id_producto">IdProducto:</label>
-                <input type="text" id="id_producto" name="id_producto" class="input1">
-            </div>
-
-            <button type="submit">Actualizar</button>
-            <button type="button" onclick="closeFormAct()">Cancelar</button>
-        </form>
-    </div>
-    <script src="formScriptAct.js"></script>
 </body> 
 </html>
