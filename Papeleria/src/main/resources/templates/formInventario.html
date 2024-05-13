@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link rel="stylesheet" href="css/formStyle.css">
+    <link rel="stylesheet" href="/css/formStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
@@ -25,7 +26,7 @@
     </nav>
     <div class="arriba"></div>
     <div class="imagen">
-        <img src="img/Portada.jpg">
+        <img src="/img/Portada.jpg">
       </div>
       <div class="logo">
         <h1>Usuario:Rosita</h1>
@@ -54,11 +55,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="inventario:${list_inventory}">
-                        <td th:text="${inventario.id_inventario}">Id</td>
-                        <td th:text="${inventario.descripcion}">descripcion</td>
-                        <td th:text="${inventario.cantidad}">cant</td>
-                        <td th:text="${inventario.producto_id_producto}">producto_id</td>
+                    <tr th:each="inventario : ${list_inventory}">
+                        <td><span th:text="${inventario.id_inventario}"></span>Id</td>
+                        <td><span th:text="${inventario.descripcion}"></span>descripcion</td>
+                        <td><span th:text="${inventario.cantidad}"></span>cant</td>
+                        <td><span th:text="${inventario.producto_id_producto}"></span>producto_id</td>
                         <td> 
                             <button class="actualizar" onclick="openFormAct()">
                                 <i class="fa-solid fa-pen-to-square"></i>
@@ -74,28 +75,29 @@
             </table>
         </div>
     </div>
+    
     <div id="floatingForm" class="floating-form">
         <h2>Agregar Inventario</h2>
-        <form>
-            <label for="id_invenatrio">Id invenatrio:</label>
-            <input type="text" id="id_invenatrio" name="id_invenatrio">
-            <label for="descripcion">Descrcipcion:</label>
-            <input type="text" id="descripcion" name="descripcion">
-            <label for="cant">Cantidad:</label>
-            <input type="number" id="cant" name="cant">
-            <label for="id_producto">Producto ID:</label>
-            <input type="number" id="id_producto" name="id_producto">
+        <form action="/insert_inventory" method="post">
+            <label for="id_inventario">Id inventario:</label>
+            <input type="text" id="id_inventario" name="id_inventario">
+            <label for="descripcion">Descripcion:</label>
+            <input type="text" id="descripcion" name="descripcion" >
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" >
+            <label for="producto_id_producto">Producto ID:</label>
+            <input type="text" id="producto_id_producto" name="producto_id_producto">
             <button type="submit">Guardar</button>
             <button type="button" onclick="closeForm()">Cancelar</button>
         </form>
     </div>
 
-    <script src="formScriptAgregar.js"></script>
+    <script src="/js/formScriptAgregar.js"></script>
 
     <div id="floatingFormAct" class="floating-form">
         <h2>Actualizar Inventario</h2>
         <form>
-            <label for="id_invenatrio">Id invenatrio:</label>
+            <label for="id_invenatrio">Id inventario:</label>
             <input type="text" id="id_invenatrio" name="id_invenatrio">
             <label for="descripcion">Descrcipcion:</label>
             <input type="text" id="descripcion" name="descripcion">
@@ -107,6 +109,6 @@
             <button type="button" onclick="closeFormAct()">Cancelar</button>
         </form>
     </div>
-    <script src="formScriptAct.js"></script>
+    <script src="/js/formScriptAct.js"></script>
 </body> 
 </html>

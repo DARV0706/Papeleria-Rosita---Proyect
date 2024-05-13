@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import co.edu.unbosque.Papeleria.dao.InventarioDAO;
+import co.edu.unbosque.Papeleria.dto.InventarioDTO;
 import co.edu.unbosque.Papeleria.modelo.Inventario;
 
 @Controller
@@ -27,19 +29,41 @@ public class InventarioController {
 	private InventarioDAO inventoryDao;
 
 	@GetMapping("/list_inventory")
-	public String mostrar_inventario(Model model) {
+	public String listInventory(Model model) {
 		List<Inventario> inventarios = inventoryDao.listInventory();
-		System.out.println("Lista de inventarios: " + inventarios);
+		
+		// Imprimir los datos en la consola del servidor
+        System.out.println("Datos de inventario obtenidos correctamente desde la base de datos:");
+        for (Inventario inventario : inventarios) {
+            System.out.println("ID: " + inventario.getId_inventario() + ", Descripción: " + inventario.getDescripcion() + ", Cantidad: " + inventario.getCantidad());
+        }
+        
 		model.addAttribute("list_inventory", inventarios);
 		return "formInventario";
 	}
 	
-
+//	@PostMapping("/inventario/insert_inventory")
+//    public String insertInventory(@ModelAttribute("inventarioDTO") InventarioDTO inventarioDTO) {
+//        inventoryDao.insertInventory(convertToInventarioEntity(inventarioDTO));
+//        return "redirect:/inventario/list_inventory";
+//    }
+	
 	@PostMapping("/insert_inventory")
-	public ResponseEntity<Inventario> insertInventory(@RequestBody Inventario log) {
-		Inventario newLog = inventoryDao.insertInventory(log);
-		return new ResponseEntity<>(newLog, HttpStatus.OK);
-	}
+    public String insertInventory(@RequestParam String id_inventario, @RequestParam String descripcion, @RequestParam int cantidad, @RequestParam String producto_id_producto) {
+        Inventario inventario = new Inventario();
+        inventario.setId_inventario(id_inventario);
+        inventario.setDescripcion(descripcion);
+        inventario.setCantidad(cantidad);
+        inventario.setProducto_id_producto(producto_id_producto);
+        inventoryDao.insertInventory(inventario);
+        
+        return "/inventario/list_inventory";
+    }
+	
+//	@PostMapping("/insert_inventory")
+//	public ModelAndView insertInventory(InventarioDTO inventario) {
+//		
+//	}
 
 	@DeleteMapping("/delete_inventory/{id}")
 	public ResponseEntity<Void> deleteInventory(@PathVariable String id) {
@@ -68,9 +92,13 @@ public class InventarioController {
         }
     }
 	
-	@GetMapping("/")
-	public String Login() {
-		return "MenuRosita";
-	}
+	private Inventario convertToInventarioEntity(InventarioDTO inventarioDTO) {
+        Inventario inventario = new Inventario();
+        inventario.setId_inventario(inventarioDTO.getId_inventario());
+        inventario.setDescripcion(inventarioDTO.getDescripcion());
+        inventario.setCantidad(inventarioDTO.getCantidad());
+        inventario.setProducto_id_producto(inventarioDTO.getProducto_id_producto());
+        return inventario;
+    }
 	
 }
