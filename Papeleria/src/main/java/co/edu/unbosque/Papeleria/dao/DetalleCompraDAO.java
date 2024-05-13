@@ -55,7 +55,7 @@ public class DetalleCompraDAO implements DetalleCompraCRUD<DetalleCompraDTO>{
 	public int insertBuyRep(DetalleCompraDTO BuyRep) {
 		BuyRep.setStatus(1);
 		BuyRep.setId_det_compra(calcularNumeroMaximo());
-		
+		BuyRep.setMonto_total(BuyRep.getMonto_total()*BuyRep.getCantidad());
 		String sql = "INSERT INTO detalle_compra (id_det_compra, precio, cantidad,monto_total,Compra_id_proveedor, Producto_id_producto)"
 				+ "VALUES(?,?,?,?,?,?)";
 		
@@ -66,18 +66,11 @@ public class DetalleCompraDAO implements DetalleCompraCRUD<DetalleCompraDTO>{
 
 	@Override
 	public int editBuyRep(DetalleCompraDTO BuyRep) {
-		String sql = "UPDATE detalle_compra id_det_compra=?, precio=?, cantidad=?,monto_total=?,Compra_id_compra=?, Producto_id_producto=? "
-				+ "WHERE id_det_compra = ? AND Compra_id_compra = ? AND Producto_id_producto = ? ";
-		return jdbctemple1.execute(sql, (PreparedStatementCallback<Integer>) preparedStatement -> {
-			preparedStatement.setLong(1, BuyRep.getId_det_compra());
-			preparedStatement.setLong(2, BuyRep.getPrecio());
-			preparedStatement.setLong(3, BuyRep.getCantidad());
-			preparedStatement.setLong(4, BuyRep.getMonto_total());
-			preparedStatement.setLong(5, BuyRep.getCompra_id_compra());
-			preparedStatement.setString(6, BuyRep.getProducto_id_producto());
-
-			return preparedStatement.execute() ? 1 : 0;
-		});
+	    String sql = "UPDATE detalle_compra SET id_det_compra=?, precio=?, cantidad=?, monto_total=?, Compra_id_compra=?, Producto_id_producto=? "
+	            + "WHERE id_det_compra = ? AND Compra_id_compra = ? AND Producto_id_producto = ?";
+	    return jdbctemple1.update(sql, BuyRep.getId_det_compra(), BuyRep.getPrecio(), BuyRep.getCantidad(),
+	            BuyRep.getMonto_total(), BuyRep.getCompra_id_compra(), BuyRep.getProducto_id_producto(),
+	            BuyRep.getId_det_compra(), BuyRep.getCompra_id_compra(), BuyRep.getProducto_id_producto());
 	}
 	
 	private int calcularNumeroMaximo() {
