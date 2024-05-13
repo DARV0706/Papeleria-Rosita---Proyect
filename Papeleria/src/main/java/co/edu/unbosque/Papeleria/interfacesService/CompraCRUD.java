@@ -12,5 +12,5 @@ public interface CompraCRUD <clase>{
 	public int deleteBuy(int id);
 	public int insertBuy(clase compraDTO);
 	public int editBuy(clase compraDTO);
-	public int changeStatus(clase compraDTO);
+	
 }

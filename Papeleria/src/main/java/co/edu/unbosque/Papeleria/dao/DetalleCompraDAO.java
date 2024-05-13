@@ -53,6 +53,9 @@ public class DetalleCompraDAO implements DetalleCompraCRUD<DetalleCompraDTO>{
 
 	@Override
 	public int insertBuyRep(DetalleCompraDTO BuyRep) {
+		BuyRep.setStatus(1);
+		BuyRep.setId_det_compra(calcularNumeroMaximo());
+		
 		String sql = "INSERT INTO detalle_compra (id_det_compra, precio, cantidad,monto_total,Compra_id_proveedor, Producto_id_producto)"
 				+ "VALUES(?,?,?,?,?,?)";
 		
@@ -83,12 +86,6 @@ public class DetalleCompraDAO implements DetalleCompraCRUD<DetalleCompraDTO>{
         return r ;
     }
 
-	@Override
-	public int changeStatus(DetalleCompraDTO BuyRep) {
-		String sql = "UPDATE detalle_compra SET status = 1 WHERE id_det_compra = ? ";
-	    int aux = jdbctemple1.update(sql, BuyRep.getStatus(), BuyRep.getId_det_compra());
-		return 1;
-	}
 
 	@Override
 	public DetalleCompraDTO searchBuyRep(int id, int id2, String id3) {

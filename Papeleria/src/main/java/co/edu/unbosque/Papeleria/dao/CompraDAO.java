@@ -100,14 +100,7 @@ public class CompraDAO implements CompraCRUD<CompraDTO>{
 		});
 	}
 
-	@Override
-	public int changeStatus(CompraDTO compraDTO) {
-		// TODO Auto-generated method stub
-		String sql = "UPDATE compra SET status = 1 WHERE id = ? ";
-	    int aux = jdbctemple1.update(sql, compraDTO.getStatus(), compraDTO.getId_compra());
 
-		return 1;
-	}
 	
 	private int calcularNumeroMaximo() {
         String sql = "SELECT MAX(id_compra) FROM compra";

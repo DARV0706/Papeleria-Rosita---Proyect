@@ -9,6 +9,5 @@ public interface DetalleCompraCRUD<clase> {
 	public int deleteBuyRep(int id, int id2, String id3);
 	public int insertBuyRep(clase BuyRep);
 	public int editBuyRep(clase BuyRep);
-	public int changeStatus(clase BuyRep);
 
 }
