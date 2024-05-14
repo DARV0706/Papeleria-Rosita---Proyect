@@ -29,10 +29,17 @@ public class ProductoController {
 	
 	
 	@GetMapping("/listaProducto")
-	public String listarFestival(Model modelo) {
+	public String listar(Model modelo) {
 	  List<ProductoDTO> lista = prodDao.listProduct();
 	  modelo.addAttribute("listaProducto", lista);
 	  return "formProducto";
+	}
+	
+	@GetMapping("/listaProductoGladis")
+	public String listarGladis(Model modelo) {
+	  List<ProductoDTO> lista = prodDao.listProduct();
+	  modelo.addAttribute("listaProducto", lista);
+	  return "formProductoGladis";
 	}
 	
 	@GetMapping("/insertarProducto")

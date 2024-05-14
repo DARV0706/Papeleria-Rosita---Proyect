@@ -28,7 +28,7 @@
         <img src="img/Portada.jpg">
       </div>
       <div class="logo">
-        <h1>Usuario:Gladis</h1>
+        <h1>Usuario: Gladis</h1>
       </div>
       <div class="menu-principal">
         <h1>Productos</h1>
@@ -39,7 +39,7 @@
             <p>Productos</p>
             <div>
                 <input placeholder="Buscar">
-                <button class="agregar" onclick="openForm()">Agregar</button>
+                <button class="agregar"><a th:href="@{/insertarProducto}">Agregar</a></button>
             </div>
         </div>
         <div class="table_section">
@@ -51,30 +51,23 @@
                         <th>Iva</th>
                         <th>Costo Unitario</th>
                         <th>Costo Total</th>
-                        <th>Categoria</th>
                         <th>Descripcion</th>
                         <th>Status</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="Va el DTO">
-                        <td><span th:text="Llama la info">Id</span></td>
-                        <td><span th:text="Llama la info">nombre</span></td>
-                        <td><span th:text="Llama la info">iva</span></td>
-                        <td><span th:text="Llama la info">C/unitario</span></td>
-                        <td><span th:text="Llama la info">C/Total</span></td>
-                        <td><span th:text="Llama la info">Categoria</span></td>
-                        <td><span th:text="Llama la info">Descripcion</span></td>
-                        <td><span th:text="Llama la info">Status</span></td>
+				 <tr th:each="productoDTO: ${listaProducto}">
+               		<td th:text="${productoDTO.id_producto}"></td>
+               		<td th:text="${productoDTO.nombre_producto}"></td>
+               		<td th:text="${productoDTO.iva}"></td>
+               		<td th:text="${productoDTO.costo_unitario}"></td>
+               		<td th:text="${productoDTO.costo_total}"></td>
+               		<td th:text="${productoDTO.descripcion}"></td>
+               		<td th:text="${productoDTO.status}"></td>
                         <td> 
-                            <button class="actualizar" onclick="openFormAct()">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            
-                            <button>
-                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
-                            </button>
+                            <a class="fa-solid fa-pen-to-square" th:href="@{/editarProducto/{id}(id=${productoDTO.id_producto})}"><button></button></a>
+                            <a class="fa-solid fa-trash"  th:href="@{/borrarProducto/{id}(id=${productoDTO.id_producto})}"><button></button></a>
                             
                         </td>
                     </tr>
