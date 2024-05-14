@@ -39,7 +39,7 @@
             <p>Productos</p>
             <div>
                 <input placeholder="Buscar">
-                <button class="agregar"><a th:href="@{/insertarProducto}">Agregar</a></button>
+                <button class="agregar"><a th:href="@{/insertarProductoGladis}">Agregar</a></button>
             </div>
         </div>
         <div class="table_section">
@@ -66,8 +66,8 @@
                		<td th:text="${productoDTO.descripcion}"></td>
                		<td th:text="${productoDTO.status}"></td>
                         <td> 
-                            <a class="fa-solid fa-pen-to-square" th:href="@{/editarProducto/{id}(id=${productoDTO.id_producto})}"><button></button></a>
-                            <a class="fa-solid fa-trash"  th:href="@{/borrarProducto/{id}(id=${productoDTO.id_producto})}"><button></button></a>
+                            <a class="fa-solid fa-pen-to-square" th:href="@{/editarProductoGladis/{id}(id=${productoDTO.id_producto})}"><button></button></a>
+                            <a class="fa-solid fa-trash"  th:href="@{/borrarProductoGladis/{id}(id=${productoDTO.id_producto})}"><button></button></a>
                             
                         </td>
                     </tr>

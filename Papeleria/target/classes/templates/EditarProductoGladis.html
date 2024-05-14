@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Producto</title>
+    <link rel="stylesheet" href="formFormularios.css">
+</head>
+<body>
+    <div id="floatingForm" class="floating-form">
+        <h2>Actualizar Producto</h2>
+         <form th:action="@{/actualizarProductoGladis}" th:object="${producto}" method="post">
+           <label for="id_producto">Id Producto:</label>
+            <input type="text" th:field="*{id_producto}" id="id_producto" name="id_producto">
+            <label for="nombre_producto">Nombre:</label>
+            <input type="text" th:field="*{nombre_producto}" id="nombre_producto" name="nombre_producto">
+            <label for="iva">Iva:</label>
+            <input type="number" th:field="*{iva}" id="iva" name="iva">
+            <label for="costo_unitario">Costo Unitario:</label>
+            <input type="number" th:field="*{costo_unitario}" id="costo_unitario" name="costo_unitario">
+            <label for="costo_total">Costo Total:</label>
+            <input type="number" th:field="*{costo_total}" id="costo_total" name="costo_total">
+            <label for="descripcion">Descripcion:</label>
+            <input type="text" th:field="*{descripcion}" id="descripcion" name="descripcion">
+            <label for="status">Status:</label>
+            <input type="text" th:field="*{status}" id="status" name="status">
+            <br><br>
+            <button type="submit">Actualizar</button>
+
+        </form>
+    </div>
+</body> 
+</html>

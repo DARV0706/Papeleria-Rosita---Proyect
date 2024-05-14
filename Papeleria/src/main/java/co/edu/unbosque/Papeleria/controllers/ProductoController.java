@@ -68,9 +68,40 @@ public class ProductoController {
 	}
 	
 	@GetMapping("/borrarProducto/{id}")
-	public String borrarpelicula(@PathVariable String id) {
+	public String borrar(@PathVariable String id) {
 		prodDao.deleteProduct(id);
 		return "redirect:/listaProducto";
+	}
+
+	@GetMapping("/insertarProductoGladis")
+	public String insertarGladis(Model model) {
+		model.addAttribute("producto", new ProductoDTO());
+		return "CrearProductoGladis";
+	}
+	
+	@PostMapping("/guardarProductoGladis")
+	public String guardarGladis(@ModelAttribute ProductoDTO productoDTO) {
+		prodDao.insertProduct(productoDTO);
+		return "redirect:/listaProductoGladis";
+	}
+	
+	@GetMapping("/editarProductoGladis/{id}")
+	public String editarGladis(@PathVariable String id, Model model) {
+		ProductoDTO productoDTO = prodDao.searchProduct(id);
+		model.addAttribute("producto", productoDTO);
+		return "EditarProductoGladis";
+	}
+	
+	@PostMapping("/actualizarProductoGladis")
+	public String actualizarGladis(@ModelAttribute ProductoDTO productoDTO) {
+		prodDao.editProduct(productoDTO);
+		return "redirect:/listaProductoGladis";
+	}
+	
+	@GetMapping("/borrarProductoGladis/{id}")
+	public String borrarGladis(@PathVariable String id) {
+		prodDao.deleteProduct(id);
+		return "redirect:/listaProductoGladis";
 	}
 
 }
