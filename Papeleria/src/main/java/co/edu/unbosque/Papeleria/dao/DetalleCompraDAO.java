@@ -55,7 +55,7 @@ public class DetalleCompraDAO implements DetalleCompraCRUD<DetalleCompraDTO>{
 	public int insertBuyRep(DetalleCompraDTO BuyRep) {
 		BuyRep.setStatus(1);
 		BuyRep.setId_det_compra(calcularNumeroMaximo());
-		BuyRep.setMonto_total(BuyRep.getMonto_total()*BuyRep.getCantidad());
+		BuyRep.setMonto_total(BuyRep.getPrecio()*BuyRep.getCantidad());
 		String sql = "INSERT INTO detalle_compra (id_det_compra, precio, cantidad,monto_total,Compra_id_proveedor, Producto_id_producto)"
 				+ "VALUES(?,?,?,?,?,?)";
 		

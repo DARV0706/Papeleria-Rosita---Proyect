@@ -8,21 +8,20 @@
 <body>
     <div id="floatingForm" class="floating-form">
         <h2>Actualizar Compra</h2>
-        <form>
-                <label for="id_compra">Id Compra:</label>
-                <input type="number" id="id_compra" name="id_compra">
-                <label for="f_compra">FechaCompra:</label>
-                <input type="date" id="f_compra" name="f_compra">
-                <label for="f_llegada">FechaLLegada:</label>
-                <input type="date" id="f_llegada" name="f_llegada">
-                <label for="t_compra">Total Compra:</label>
-                <input type="number" id="t_compra" name="t_compra">
-                <label for="id_proveedor">Proveedor ID:</label>
-                <input type="number" id="id_proveedor" name="id_proveedor">
+        <form th:action="@{/edit_buy}" th:object="${compra}" method="post">
+            <label for="id_compra">Id Compra:</label>
+            <input type="number" id="id_compra" name="id_compra" th:field="*{id_compra}">
+            <label for="f_compra">FechaCompra:</label>
+            <input type="text" id="f_compra" name="f_compra" th:field="*{fecha_compra}">
+            <label for="f_llegada">FechaLLegada:</label>
+            <input type="text" id="f_llegada" name="f_llegada" th:field="*{fecha_llegada}">
+            <label for="t_compra">Total Compra:</label>
+            <input type="number" id="t_compra" name="t_compra" th:field="*{tota_compra}">
+            <label for="id_proveedor">Proveedor ID:</label>
+            <input type="number" id="id_proveedor" name="id_proveedor" th:field="*{proveedor_id_proveedor}">
             <br><br>
             <button type="submit">Actualizar</button>
-
         </form>
     </div>
-</body> 
+</body>
 </html>

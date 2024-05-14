@@ -14,7 +14,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import co.edu.unbosque.Papeleria.dto.CompraDTO;
-
 import co.edu.unbosque.Papeleria.interfacesService.CompraCRUD;
 
 
@@ -26,35 +25,25 @@ public class CompraDAO implements CompraCRUD<CompraDTO>{
 
 	@Override
 	public List<CompraDTO> listBuy() {
-		String sql = "SELECT * FROM compra";
+		String sql = "SELECT * FROM compra where status=1";
 		List<CompraDTO> lista = jdbctemple1.query(sql, BeanPropertyRowMapper.newInstance(CompraDTO.class));
 		return lista;
 	}
 
 	@Override
 	public int deleteBuy(int id) {
-		String aux = "SELECT COUNT(*) FROM compra WHERE id = ? AND status = 1";
-		int contador = jdbctemple1.queryForObject(aux, Integer.class, id);
-		int aux2;
 		
-		if(contador > 0) {
-			String sql = "UPDATE compra SET status = 0 WHERE id = ?";
-			aux2 =  jdbctemple1.update(sql, id);
-				if(aux2 > 0) {
-					return 1;
-				}else {
-					return -1;
-				}
-		}else {
-			return 0;
-		}
+		String sql = "UPDATE compra SET status = 0 WHERE id_compra = ?";
+		int aux2 =  jdbctemple1.update(sql, id);
+		return 1;
+
 	}
 
 
 	@Override
 	public CompraDTO searchBuy(int id) {
 		// TODO Auto-generated method stub
-	    String sql = "SELECT * FROM compra WHERE id = ? AND status = 1";
+	    String sql = "SELECT * FROM compra WHERE id_compra = ? AND status = 1";
 	    CompraDTO compra = jdbctemple1.queryForObject(sql, new Object[]{id}, BeanPropertyRowMapper.newInstance(CompraDTO.class));
 	    return compra;
 	}
@@ -65,10 +54,10 @@ public class CompraDAO implements CompraCRUD<CompraDTO>{
 		compraDTO.setStatus(1);
 		compraDTO.setId_compra(calcularNumeroMaximo());
 		
-	    String sql = "INSERT INTO compra (id_compra, fecha_compra, fecha_llegada, total_compra, Proveedor_id_proveedor, status)"
+	    String sql = "INSERT INTO compra (id_compra, fecha_compra, fecha_llegada, tota_compra, Proveedor_id_proveedor, status)"
 	                + "VALUES (?, ?, ?, ?, ?, ?)";
 	    int aux = jdbctemple1.update(sql, compraDTO.getId_compra(), compraDTO.getFecha_compra(), compraDTO.getFecha_llegada(),
-	                                         compraDTO.getTotal_compra(), compraDTO.getProveedor_id_proveedor(), compraDTO.getStatus());
+	                                         compraDTO.getTota_compra(), compraDTO.getProveedor_id_proveedor(), compraDTO.getStatus());
 	    return aux;
 	}
 
@@ -86,9 +75,10 @@ public class CompraDAO implements CompraCRUD<CompraDTO>{
 
 	@Override
 	public int editBuy(CompraDTO compraDTO) {
-	    String sql = "UPDATE compra SET fecha_compra = ?, fecha_llegada = ?, total_compra = ?, Proveedor_id_proveedor = ?, status = ? "
+		compraDTO.setStatus(1);
+	    String sql = "UPDATE compra SET fecha_compra = ?, fecha_llegada = ?, tota_compra = ?, Proveedor_id_proveedor = ?, status = ? "
 	            + "WHERE id_compra = ?";
-	    return jdbctemple1.update(sql, compraDTO.getFecha_compra(), compraDTO.getFecha_llegada(), compraDTO.getTotal_compra(),
+	    return jdbctemple1.update(sql, compraDTO.getFecha_compra(), compraDTO.getFecha_llegada(), compraDTO.getTota_compra(),
 	            compraDTO.getProveedor_id_proveedor(), compraDTO.getStatus(), compraDTO.getId_compra());
 	}
 

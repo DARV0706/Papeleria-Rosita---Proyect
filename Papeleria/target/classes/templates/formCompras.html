@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link rel="stylesheet" href="formStyleCompras.css">
+    <link rel="stylesheet" href="/css/formStyleCompras.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
@@ -25,7 +25,7 @@
     </nav>
     <div class="arriba"></div>
     <div class="imagen">
-        <img src="img/Portada.jpg">
+        <img src="/img/Portada.jpg">
       </div>
       <div class="logo">
         <h1>Usuario:Rosita</h1>
@@ -39,7 +39,8 @@
             <p>Compras</p>
             <div>
                 <input placeholder="Buscar">
-                <button class="agregar" onclick="openForm()">Agregar</button>
+                <a th:href="@{/almacenar}"><button class="agregar" onclick="openForm()">Agregar</button></a>
+                
             </div>
         </div>
         <div class="table_section">
@@ -55,19 +56,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="Va el DTO">
-                        <td><span th:text="Llama la info">Id</span></td>
-                        <td><span th:text="Llama la info">f_compra</span></td>
-                        <td><span th:text="Llama la info">f_llegada</span></td>
-                        <td><span th:text="Llama la info">total</span></td>
-                        <td><span th:text="Llama la info">id proveedor</span></td>
+                    <tr th:each="compraDTO:${listaCompras}">
+                        <td><span th:text="${compraDTO.id_compra}"></span></td>
+                        <td><span th:text="${compraDTO.fecha_compra}">f_compra</span></td>
+                        <td><span th:text="${compraDTO.fecha_llegada}">f_llegada</span></td>
+                        <td><span th:text="${compraDTO.tota_compra}">total</span></td>
+                        <td><span th:text="${compraDTO.proveedor_id_proveedor}">id proveedor</span></td>
                         <td> 
-                            <button class="actualizar" onclick="openFormAct()">
+                        	<a  th:href="@{/actualizar/{id}(id=${compraDTO.id_compra})}">
+                            <button class="actualizar">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
+                            </a>
                             
                             <button>
-                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
+                                <a th:href="@{/delete_compra/{id}(id=${compraDTO.id_compra})}" class="boton_eliminar"><i class="fa-solid fa-trash" ></i></a>
                             </button>
                             
                         </td>

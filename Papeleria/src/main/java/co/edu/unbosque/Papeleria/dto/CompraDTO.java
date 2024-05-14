@@ -7,8 +7,7 @@ public class CompraDTO {
 	private int id_compra;
 	private String fecha_compra;
 	private String fecha_llegada;
-	private int total_compra;
-	private int saldo_pendiente;
+	private int tota_compra;
 	private int proveedor_id_proveedor;
 	private int status;	
 	
@@ -16,14 +15,13 @@ public class CompraDTO {
 		
 	}
 
-	public CompraDTO(int id_compra, String fecha_compra, String fecha_llegada, int total_compra, int saldo_pendiente,
+	public CompraDTO(int id_compra, String fecha_compra, String fecha_llegada, int tota_compra,
 			int proveedor_id_proveedor, int status) {
 		super();
 		this.id_compra = id_compra;
 		this.fecha_compra = fecha_compra;
 		this.fecha_llegada = fecha_llegada;
-		this.total_compra = total_compra;
-		this.saldo_pendiente = saldo_pendiente;
+		this.tota_compra = tota_compra;
 		this.proveedor_id_proveedor = proveedor_id_proveedor;
 		this.status = status;
 	}
@@ -52,21 +50,14 @@ public class CompraDTO {
 		this.fecha_llegada = fecha_llegada;
 	}
 
-	public int getTotal_compra() {
-		return total_compra;
+	public int getTota_compra() {
+		return tota_compra;
 	}
 
-	public void setTotal_compra(int total_compra) {
-		this.total_compra = total_compra;
+	public void setTota_compra(int total_compra) {
+		this.tota_compra = total_compra;
 	}
 
-	public int getSaldo_pendiente() {
-		return saldo_pendiente;
-	}
-
-	public void setSaldo_pendiente(int saldo_pendiente) {
-		this.saldo_pendiente = saldo_pendiente;
-	}
 
 	public int getProveedor_id_proveedor() {
 		return proveedor_id_proveedor;
