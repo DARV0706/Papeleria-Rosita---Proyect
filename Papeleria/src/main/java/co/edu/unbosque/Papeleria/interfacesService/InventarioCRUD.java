@@ -1,16 +1,11 @@
 package co.edu.unbosque.Papeleria.interfacesService;
 
 import java.util.List;
-import java.util.Optional;
 
-
-import co.edu.unbosque.Papeleria.modelo.Inventario;
-
-public interface InventarioCRUD {
-	public List<Inventario> listInventory();
-	public Optional<Inventario> searchInventory(String id);
-	public String deleteInventory(String id);
-	public Inventario insertInventory(Inventario inventory);
-	public Inventario editInventory(Inventario inventory);
-
+public interface InventarioCRUD <clase> {
+	public List<clase> listInventory();
+	public clase searchInventory(String id);
+	public int deleteInventory(String id);
+	public int insertInventory(clase inventory);
+	public int editInventory(clase inventory);
 }

@@ -15,7 +15,7 @@ public class ProveedorDTO {
 	}
 
 	public ProveedorDTO(int id_proveedor, String tipo_identificacion, String razon_social, int telefono, String direccion,
-			int saldo_pendiente) {
+			int saldo_pendiente, int status) {
 		super();
 		this.id_proveedor = id_proveedor;
 		this.tipo_identificacion = tipo_identificacion;
@@ -23,6 +23,7 @@ public class ProveedorDTO {
 		this.telefono = telefono;
 		this.direccion = direccion;
 		this.saldo_pendiente = saldo_pendiente;
+		this.status = status;
 	}
 
 	public int getId_proveedor() {
@@ -73,5 +74,12 @@ public class ProveedorDTO {
 		this.saldo_pendiente = saldo_pendiente;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
 
 }

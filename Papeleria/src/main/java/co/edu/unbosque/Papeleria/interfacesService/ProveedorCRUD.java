@@ -1,15 +1,11 @@
 package co.edu.unbosque.Papeleria.interfacesService;
 
 import java.util.List;
-import java.util.Optional;
 
-import co.edu.unbosque.Papeleria.modelo.Proveedor;
-
-public interface ProveedorCRUD {
-	public List<Proveedor> listProvider();
-	public Optional<Proveedor> searchProvider(int id);
-	public String deleteProvider(Long id);
-	public Proveedor insertProvider(Proveedor prov);
-	public Proveedor editProvider(Proveedor prov);
-
+public interface ProveedorCRUD <clase>{
+	public List<clase> listProvider();
+	public clase searchProvider(int id);
+	public int deleteProvider(int id);
+	public int insertProvider(clase provider);
+	public int editProvider(clase provider);
 }

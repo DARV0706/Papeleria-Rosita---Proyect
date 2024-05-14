@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Inventario</title>
+    <title>Actaulizar Inventario</title>
     <link rel="stylesheet" href="/css/formFormularios.css">
 </head>
 <body>
     <div id="floatingForm" class="floating-form">
-        <h2>Agregar Inventario</h2>
-        <form th:action="@{/save_inventory}" th:object="${inventario}" method="post">
+        <h2>Actualizar Inventario</h2>
+        <form th:action="@{/update_inventory_rosita}" th:object="${editInventarioRosita}" method="post">
             <label for="id_inventario">Id inventario:</label>
             <input type="text" id="id_invenatrio" name="id_inventario" th:field="*{id_inventario}">
             <label for="descripcion">Descripcion:</label>
@@ -19,7 +18,7 @@
             <label for="id_producto">Producto ID:</label>
             <input type="text" id="id_producto" name="id_producto" th:field="*{producto_id_producto}">
             <br><br>
-            <button type="submit">Guardar</button>
+            <button type="submit">Actualizar</button>
             <button type="button"> Volver</button>
         </form>
     </div>

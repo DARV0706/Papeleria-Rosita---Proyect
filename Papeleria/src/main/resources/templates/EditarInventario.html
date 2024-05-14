@@ -3,22 +3,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actaulizar Inventario</title>
-    <link rel="stylesheet" href="formFormularios.css">
+    <link rel="stylesheet" href="/css/formFormularios.css">
 </head>
 <body>
     <div id="floatingForm" class="floating-form">
         <h2>Actualizar Inventario</h2>
-        <form>
-            <label for="id_invenatrio">Id invenatrio:</label>
-            <input type="text" id="id_invenatrio" name="id_invenatrio">
-            <label for="descripcion">Descrcipcion:</label>
-            <input type="text" id="descripcion" name="descripcion">
+        <form th:action="@{/update_inventory}" th:object="${editInventario}" method="post">
+            <label for="id_inventario">Id inventario:</label>
+            <input type="text" id="id_invenatrio" name="id_inventario" th:field="*{id_inventario}">
+            <label for="descripcion">Descripcion:</label>
+            <input type="text" id="descripcion" name="descripcion" th:field="*{descripcion}">
             <label for="cant">Cantidad:</label>
-            <input type="number" id="cant" name="cant">
+            <input type="number" id="cant" name="cant" th:field="*{cantidad}">
             <label for="id_producto">Producto ID:</label>
-            <input type="number" id="id_producto" name="id_producto">
+            <input type="text" id="id_producto" name="id_producto" th:field="*{producto_id_producto}">
             <br><br>
             <button type="submit">Actualizar</button>
+            <button type="button"> Volver</button>
         </form>
     </div>
 </body> 

@@ -1,60 +1,65 @@
 package co.edu.unbosque.Papeleria.dao;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-import co.edu.unbosque.Papeleria.interfaces.ProveedorRepository;
+import co.edu.unbosque.Papeleria.dto.ProveedorDTO;
 import co.edu.unbosque.Papeleria.interfacesService.ProveedorCRUD;
-import co.edu.unbosque.Papeleria.modelo.Proveedor;
-@Service
-public class ProveedorDAO implements ProveedorCRUD {
+
+@Repository
+public class ProveedorDAO implements ProveedorCRUD<ProveedorDTO> {
 	
 	@Autowired
-	ProveedorRepository provRepo;
+	private JdbcTemplate jdbctemple1;
 
 	@Override
-	public List<Proveedor> listProvider() {
-		// TODO Auto-generated method stub
-		return provRepo.providerActives();
+	public List<ProveedorDTO> listProvider() {
+		String sql = "SELECT * FROM proveedor";
+		List<ProveedorDTO> lista = jdbctemple1.query(sql, BeanPropertyRowMapper.newInstance(ProveedorDTO.class));
+		return lista;
 	}
 
 	@Override
-	public Optional<Proveedor> searchProvider(int id) {
-		// TODO Auto-generated method stub
-		return provRepo.findById(id);
+	public ProveedorDTO searchProvider(int id) {
+		String sql = "SELECT * FROM proveedor WHERE id_proveedor = ?";
+		ProveedorDTO resultado = jdbctemple1.queryForObject(sql, new Object[] {id}, BeanPropertyRowMapper.newInstance(ProveedorDTO.class));
+		return resultado;
 	}
 
 	@Override
-	public String deleteProvider(Long id) {
-		// TODO Auto-generated method stub
-		String aux = "Eliminado";
-		provRepo.deleteProvider(id, 0);
-		return aux;
+	public int deleteProvider(int id) {
+		String sql = "DELETE FROM proveedor WHERE id_proveedor = ?";
+		int resultado = jdbctemple1.update(sql, new Object[] {id});
+		return resultado;
 	}
 
 	@Override
-	public Proveedor insertProvider(Proveedor prov) {
-		// TODO Auto-generated method stub
-		Proveedor pro = provRepo.save(prov);
-		provRepo.changeStatus(prov.getId_proveedor(), 1);
-		return pro; 
-
+	public int insertProvider(ProveedorDTO proveedor) {
+		String sql = "INSERT INTO proveedor VALUES(?, ?, ?, ?, ?, ?, ?)";
+		int resultado = jdbctemple1.update(sql, proveedor.getId_proveedor(), proveedor.getTipo_identificacion(), proveedor.getRazon_social(), proveedor.getTelefono(), proveedor.getDireccion(), proveedor.getSaldo_pendiente(), proveedor.getStatus());
+		
+		if(resultado == 1) {
+			System.out.println("proveedor creado");
+		} else if (resultado == 0) {
+			System.out.println("El proveedor ya existe");
+		}
+		return resultado;
 	}
 
 	@Override
-	public Proveedor editProvider(Proveedor prov) {
-		Proveedor provider = provRepo.findById(prov.getId_proveedor()).orElse(null);
-		provider.getId_proveedor();
-		provider.setTipo_identificacion(prov.getTipo_identificacion());
-		provider.setRazon_social(prov.getRazon_social());
-		provider.setTelefono(prov.getTelefono());
-		provider.setDireccion(prov.getDireccion());
-		provider.setSaldo_pendiente(prov.getSaldo_pendiente());
-		return provRepo.save(provider);
+	public int editProvider(ProveedorDTO proveedor) {
+		String sql = "UPDATE proveedor SET tipo_identificacion = ?, razon_social = ?, telefono = ?, direccion = ?, saldo_pendiente = ?, status = ? WHERE id_proveedor = ?";
+		int resultado = jdbctemple1.update(sql, proveedor.getTipo_identificacion(), proveedor.getRazon_social(), proveedor.getTelefono(),  proveedor.getDireccion(), proveedor.getSaldo_pendiente(), proveedor.getStatus(), proveedor.getId_proveedor());
+		
+		if(resultado == 1) {
+			System.out.println("Proveedor Actualizado");
+		} else if (resultado == 0) {
+			System.out.println("El proveedor no existe");
+		}
+		return resultado;
 	}
-
-
 }

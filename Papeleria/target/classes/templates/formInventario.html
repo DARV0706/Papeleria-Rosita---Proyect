@@ -1,9 +1,10 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link rel="stylesheet" href="formStyle.css">
+    <link rel="stylesheet" href="/css/formStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
@@ -25,7 +26,7 @@
     </nav>
     <div class="arriba"></div>
     <div class="imagen">
-        <img src="img/Portada.jpg">
+        <img src="/img/Portada.jpg">
       </div>
       <div class="logo">
         <h1>Usuario:Rosita</h1>
@@ -39,7 +40,7 @@
             <p>Inventario</p>
             <div>
                 <input placeholder="Buscar">
-                <button class="agregar" onclick="openForm()">Agregar</button>
+                <a th:href="@{/insert_inventory_rosita}"><button class="agregar">Agregar</button></a>
             </div>
         </div>
         <div class="table_section">
@@ -54,20 +55,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="Va el DTO">
-                        <td><span th:text="Llama la info">Id</span></td>
-                        <td><span th:text="Llama la info">descripcion</span></td>
-                        <td><span th:text="Llama la info">cant</span></td>
-                        <td><span th:text="Llama la info">producto_id</span></td>
+                    <tr th:each="inventario : ${listaInventarioRosita}">
+                        <td><span th:text="${inventario.id_inventario}"></span></td>
+                        <td><span th:text="${inventario.descripcion}"></span></td>
+                        <td><span th:text="${inventario.cantidad}"></span></td>
+                        <td><span th:text="${inventario.producto_id_producto}"></span></td>
                         <td> 
-                            <button class="actualizar" onclick="openFormAct()">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
+							<a th:href="@{/edit_inventory_rosita/{id}(id=${inventario.id_inventario})}">
+                            	<button class="actualizar">
+                                	<i class="fa-solid fa-pen-to-square"></i>
+                            	</button>
+                            </a>
                             
                             <button>
-                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
+                                <a th:href="@{/delete_inventory_rosita/{id}(id=${inventario.id_inventario})}" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
                             </button>
-                            
                         </td>
                     </tr>
                 </tbody>

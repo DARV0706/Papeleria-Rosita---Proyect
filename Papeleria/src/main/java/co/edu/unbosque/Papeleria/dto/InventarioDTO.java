@@ -6,10 +6,9 @@ public class InventarioDTO {
 	private int cantidad;
 	private String producto_id_producto;
 	
-	public void InventarioDTO() {
+	public InventarioDTO() {
 		
 	}
-
 	public InventarioDTO(String id_inventario, String descripcion, int cantidad, String producto_id_producto) {
 		super();
 		this.id_inventario = id_inventario;

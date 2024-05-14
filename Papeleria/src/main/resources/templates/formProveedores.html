@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
-    <link rel="stylesheet" href="formStyle.css">
+    <link rel="stylesheet" href="/css/formStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
@@ -39,7 +39,7 @@
             <p>Proveedores</p>
             <div>
                 <input placeholder="Buscar">
-                <button class="agregar" onclick="openForm()">Agregar</button>
+                <a th:href="@{/insert_provider}"><button class="agregar">Agregar</button></a>
             </div>
         </div>
         <div class="table_section">
@@ -52,24 +52,28 @@
                         <th>Telefono</th>
                         <th>Direccion</th>
                         <th>Saldo Pendiente</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="Va el DTO">
-                        <td><span th:text="Llama la info">Id</span></td>
-                        <td><span th:text="Llama la info">identificacion</span></td>
-                        <td><span th:text="Llama la info">Razon</span></td>
-                        <td><span th:text="Llama la info">Telefono</span></td>
-                        <td><span th:text="Llama la info">Saldo</span></td>
-                        <td><span th:text="Llama la info">naa</span></td>
+                    <tr th:each="proveedor : ${listaProveedor}">
+                        <td><span th:text="${proveedor.id_proveedor}"></span></td>
+                        <td><span th:text="${proveedor.tipo_identificacion}"></span></td>
+                        <td><span th:text="${proveedor.razon_social}"></span></td>
+                        <td><span th:text="${proveedor.telefono}"></span></td>
+                        <td><span th:text="${proveedor.direccion}"></span></td>
+                        <td><span th:text="${proveedor.saldo_pendiente}"></span></td>
+						<td><span th:text="${proveedor.status}"></span></td>
                         <td> 
-                            <button class="actualizar" onclick="openFormAct()">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
+							<a th:href="@{/edit_provider/{id}(id=${proveedor.id_proveedor})}">
+                            	<button class="actualizar" onclick="openFormAct()">
+                                	<i class="fa-solid fa-pen-to-square"></i>
+                            	</button>
+                            </a>
                             
                             <button>
-                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
+                                <a th:href="@{/delete_provider/{id}(id=${proveedor.id_proveedor})}" class="boton_eliminar"><i class="fa-solid fa-trash"></i></a>
                             </button>
                             
                         </td>

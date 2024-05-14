@@ -1,74 +1,74 @@
 package co.edu.unbosque.Papeleria.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.edu.unbosque.Papeleria.dao.ProveedorDAO;
-import co.edu.unbosque.Papeleria.modelo.Cliente;
-import co.edu.unbosque.Papeleria.modelo.Proveedor;
+import co.edu.unbosque.Papeleria.dto.ProveedorDTO;
 
 @Controller
-@RequestMapping("/proveedor")
 public class ProveedorController {
+	
 	@Autowired
 	private ProveedorDAO provDao;
 	
 	@GetMapping("/list_provider")
-    public ResponseEntity<List<Proveedor>> listProvider() {
-        List<Proveedor> logs = provDao.listProvider();
+    public String listProvider(Model model) {
+        List<ProveedorDTO> lista = provDao.listProvider();
 
-        if (logs.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(logs, HttpStatus.OK);
-        }
+        model.addAttribute("listaProveedor", lista);
+        return "formProveedores";
     }
 	
-	@PostMapping("/insert_provider")
-    public ResponseEntity<Proveedor> insertProvider(@RequestBody Proveedor pov) {
-		Proveedor newProvider = provDao.insertProvider(pov);
-        return new ResponseEntity<>(newProvider, HttpStatus.OK);
+	@GetMapping("/insert_provider")
+    public String abrirProveedor(Model model) {
+		model.addAttribute("proveedor", new ProveedorDTO());
+		return "CrearProveedor";
+	}
+	
+	@PostMapping("/save_provider")
+    public String insertInventory(@ModelAttribute ProveedorDTO proveedordto){
+		provDao.insertProvider(proveedordto);
+        return "redirect:/list_provider";
     }
 	
-    @DeleteMapping("/delete_provider/{id}")
-    public ResponseEntity<Void> deleteProvider(@PathVariable Long id) {
-        String resultado = provDao.deleteProvider(id);
-        if (resultado.equals("ELIMINACIÓN EXITOSA")) {
-            return ResponseEntity.noContent().build(); 
-        } else {
-            return ResponseEntity.notFound().build(); 
-        }
+    @GetMapping("/delete_provider/{id}")
+    public String deleteProvider(@PathVariable int id) {
+        provDao.deleteProvider(id);
+        return "redirect:/list_provider";
     }
     
-    @PutMapping("/edit_provider")
-    public ResponseEntity<Proveedor> editProvider(@RequestBody Proveedor pov){
-    	Proveedor editProvider = provDao.editProvider(pov);
-		return new ResponseEntity<Proveedor>(editProvider, HttpStatus.ACCEPTED);
-    	
+    @GetMapping("/edit_provider/{id}")
+    public String editProvider(@PathVariable int id, Model model){
+    	ProveedorDTO proveedor = provDao.searchProvider(id);
+		model.addAttribute("editProveedor", proveedor);
+		return "EditarProveedor";
     }
     
-	@GetMapping("/list_provider/{id}")
-    public ResponseEntity<Optional> listProviderId(@PathVariable int id) {
-        Optional<Proveedor> logs = provDao.searchProvider(id);
-
-        if (logs == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>( logs, HttpStatus.OK);
-        }
-    }
+    @PostMapping("/update_provider")
+	public String upProvider(@ModelAttribute ProveedorDTO provdto) {
+		provDao.editProvider(provdto);
+		return "redirect:/list_provider";
+	}
+    
+//	@GetMapping("/list_provider/{id}")
+//    public ResponseEntity<Optional> listProviderId(@PathVariable int id) {
+//        Optional<Proveedor> logs = provDao.searchProvider(id);
+//
+//        if (logs == null) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        } else {
+//            return new ResponseEntity<>( logs, HttpStatus.OK);
+//        }
+//    }
 	
 
 }

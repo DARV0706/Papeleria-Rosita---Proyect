@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,13 +39,13 @@
   <div class="card">
     <img src="/img/Proveedores.jpg">
     <h4>Proveedores</h4>
-    <button class="button button1"><a class="btna" href="formProveedores.html">Ver</a></button>
+    <button class="button button1"><a class="btna" th:href="@{/list_provider}">Ver</a></button>
   </div>
 
   <div class="card">
     <img src="/img/Inventario.jpg">
     <h4>Inventario</h4>
-    <button class="button button1"><a class="btna" href="formInventario.html">Ver</a></button>
+    <button class="button button1"><a class="btna" th:href="@{/list_inventory_rosita}">Ver</a></button>
   </div>
 
   <div class="card">
