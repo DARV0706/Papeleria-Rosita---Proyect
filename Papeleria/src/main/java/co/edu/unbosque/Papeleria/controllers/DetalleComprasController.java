@@ -24,6 +24,7 @@ import co.edu.unbosque.Papeleria.dto.DetalleCompraDTO;
 @Controller
 @RequestMapping("/detalleCompras")
 public class DetalleComprasController {
+	
 	@Autowired
 	private DetalleCompraDAO BuyRepoDao;
 	
@@ -31,8 +32,8 @@ public class DetalleComprasController {
 	    public String listBuyRep(Model model) {
 	        List<DetalleCompraDTO> logs = BuyRepoDao.listBuyRep();
 	        model.addAttribute("listaDetalleCompra",logs);
-	          return "list_buy_rep_view"; // Vista para mostrar la lista de registros
-	    }
+	          return "formDetalleCompras";
+	 }
 
 	    @PostMapping("/insert_buyRep")
 	    public String insertBuyRep(@ModelAttribute DetalleCompraDTO log) {
@@ -58,6 +59,4 @@ public class DetalleComprasController {
 	        return "detalle_compra_view"; 
 
 	    }
-	
-
 }

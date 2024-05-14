@@ -133,9 +133,5 @@ public class InventarioController {
 //        }
 //    }
 	
-	@GetMapping("/")
-    public String hola() {
-        return "menuRosita";
-    }
 	
 }
