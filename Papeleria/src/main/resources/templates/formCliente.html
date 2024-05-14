@@ -58,7 +58,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="clienteDTO: ${listaClientes}">
+                    <tr th:each="clienteDTO: ${listaCliente}">
                         <td th:text="${clienteDTO.id_cliente}"></td>
                         <td th:text="${clienteDTO.tipo_identificacion}"></td>
                         <td th:text="${clienteDTO.razon_social}"></td>
@@ -67,13 +67,9 @@
                         <td th:text="${clienteDTO.saldo_pendiente}"></td>
                         <td th:text="${clienteDTO.status}"></td>
                         <td> 
-                            <button class="actualizar" >
-                                <i class="fa-solid fa-pen-to-square" th:href="@{/editarCliente/{id}(id=${clienteDTO.id_cliente})}"></i>
-                            </button>
-                            
-                            <button>
-                                <a href="" class="boton_eliminar"><i class="fa-solid fa-trash" th:href="@{/borrarCliente/{id}(id=${clienteDTO.id_cliente})}"></i></a>
-                            </button>
+
+                              <a class="fa-solid fa-pen-to-square" th:href="@{/editarCliente/{id}(id=${clienteDTO.id_cliente})}"><button></button></a>
+                            <a class="fa-solid fa-trash" th:href="@{/borrarCliente/{id}(id=${clienteDTO.id_cliente})}"><button></button></a>
                             
                         </td>
                     </tr>

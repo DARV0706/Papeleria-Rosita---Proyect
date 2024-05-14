@@ -22,7 +22,6 @@ import co.edu.unbosque.Papeleria.dao.ClienteDAO;
 import co.edu.unbosque.Papeleria.dto.ClienteDTO;
 
 @Controller
-@RequestMapping("/cliente")
 public class ClienteController {
 	
 	@Autowired

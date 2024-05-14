@@ -22,7 +22,7 @@ public class ProductoDAO implements ProductoCRUD{
 	
 	@Override
 	public List<ProductoDTO> listProduct() {
-		String sql = "SELECT * FROM producto where status=1";
+		String sql = "SELECT * FROM producto";
 	    List<ProductoDTO> lista = jdbctemple1.query(sql, BeanPropertyRowMapper.newInstance(ProductoDTO.class));
 	    return lista;
 	}
@@ -44,15 +44,14 @@ public class ProductoDAO implements ProductoCRUD{
 
 	@Override
 	public int insertProduct(ProductoDTO product) {
-	    product.setCosto_total(product.getCosto_unitario() * product.getIva());
 	    String sqlFuncion = "INSERT INTO producto (id_producto, nombre_producto, iva, costo_unitario, costo_total, descripcion, status) VALUES (?, ?, ?, ?, ?, ?, ?)";
 	    int rowsAffected = jdbctemple1.update(sqlFuncion, product.getId_producto(), product.getNombre_producto(), product.getIva(), product.getCosto_unitario(), product.getCosto_total(), product.getDescripcion(), product.getStatus());
+	    System.out.println("si se guardo");
 	    return rowsAffected;
 	}
 
 	@Override
 	public int editProduct(ProductoDTO product) {
-	    product.setCosto_total(product.getCosto_unitario() * product.getIva());
 	    String sqlFuncion = "UPDATE producto SET nombre_producto = ?, iva = ?, costo_unitario = ?, costo_total = ?, descripcion = ?, status = ? WHERE id_producto = ?";
 	    int rowsAffected = jdbctemple1.update(sqlFuncion, product.getNombre_producto(), product.getIva(), product.getCosto_unitario(), product.getCosto_total(), product.getDescripcion(), product.getStatus(), product.getId_producto());
 	    return rowsAffected;
@@ -60,3 +59,4 @@ public class ProductoDAO implements ProductoCRUD{
 
 
 }
+

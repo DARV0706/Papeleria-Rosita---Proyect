@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.edu.unbosque.Papeleria.dao.ProductoDAO;
-import co.edu.unbosque.Papeleria.dao.ProveedorDAO;
 import co.edu.unbosque.Papeleria.dto.ProductoDTO;
 
 
+
 @Controller
-@RequestMapping("/producto")
 public class ProductoController {
 	@Autowired
 	private ProductoDAO prodDao;
+	
 	
 	@GetMapping("/listaProducto")
 	public String listarFestival(Model modelo) {
@@ -51,7 +51,7 @@ public class ProductoController {
 	public String editar(@PathVariable String id, Model model) {
 		ProductoDTO productoDTO = prodDao.searchProduct(id);
 		model.addAttribute("producto", productoDTO);
-		return "EditarFestival";
+		return "EditarProducto";
 	}
 	
 	@PostMapping("/actualizarProducto")
@@ -67,3 +67,4 @@ public class ProductoController {
 	}
 
 }
+
