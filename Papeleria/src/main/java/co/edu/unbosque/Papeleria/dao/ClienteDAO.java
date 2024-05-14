@@ -37,32 +37,30 @@ public class ClienteDAO implements ClienteCRUD {
 
 	@Override
 	public int deleteCustom(int id) {
-		String sqlFuncion = "update cliente set status=0 where id_cliente=?";
+	    String sqlFuncion = "UPDATE cliente SET status = 0 WHERE id_cliente = ?";
 	    
-	    int resultadoFuncion = jdbctemple1.queryForObject(sqlFuncion, new Object[]{id}, Integer.class);
+	    int rowsAffected = jdbctemple1.update(sqlFuncion, id);
 	    
-	    return resultadoFuncion;
+	    return rowsAffected;
 	}
 
 	@Override
 	public int insertCustom(ClienteDTO cliente) {
-		 String sqlFuncion = "insert into cliente(id_cliente,tipo_identificacion,razon_social,telefono,direccion,saldo_pendiente,status) values (?,?,?,?,?,?,?)";
-		    int resultadoFuncion = jdbctemple1.queryForObject(sqlFuncion, new Object[]{cliente.getId_cliente(),
-		    		cliente.getTipo_identificacion(), cliente.getRazon_social(), cliente.getTelefono(),
-		    		cliente.getDireccion(), cliente.getSaldo_pendiente(), cliente.getStatus()}, Integer.class);
-
-		    return resultadoFuncion;
+	    String sqlFuncion = "INSERT INTO cliente (id_cliente, tipo_identificacion, razon_social, telefono, direccion, saldo_pendiente, status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	    
+	    int rowsAffected = jdbctemple1.update(sqlFuncion, cliente.getId_cliente(), cliente.getTipo_identificacion(), cliente.getRazon_social(), cliente.getTelefono(), cliente.getDireccion(), cliente.getSaldo_pendiente(), cliente.getStatus());
+	    
+	    return rowsAffected;
 	}
+
 
 	@Override
 	public int editCustom(ClienteDTO cliente) {
-		String sqlFuncion = "update cliente set tipo_identificacion=?,razon_social=?,telefono=?,direccion=?,saldo_pendiente=?,status=? where id_cliente=?";
-	    int resultadoFuncion = jdbctemple1.queryForObject(sqlFuncion, new Object[]{
-	    		cliente.getTipo_identificacion(), cliente.getRazon_social(), cliente.getTelefono(),
-	    		cliente.getDireccion(), cliente.getSaldo_pendiente(), cliente.getStatus(),cliente.getId_cliente()}, Integer.class);
-
-	    return resultadoFuncion;
+	    String sqlFuncion = "UPDATE cliente SET tipo_identificacion=?, razon_social=?, telefono=?, direccion=?, saldo_pendiente=?, status=? WHERE id_cliente=?";
+	    int rowsAffected = jdbctemple1.update(sqlFuncion, cliente.getTipo_identificacion(), cliente.getRazon_social(), cliente.getTelefono(), cliente.getDireccion(), cliente.getSaldo_pendiente(), cliente.getStatus(), cliente.getId_cliente());
+	    return rowsAffected;
 	}
+
 
 	@Override
 	public List<ClienteDTO> listDeletedCustom() {

@@ -35,38 +35,28 @@ public class ProductoDAO implements ProductoCRUD{
 	        return productoDTO;
 
 	}
-
 	@Override
 	public int deleteProduct(String id) {
-		String sqlFuncion = "update producto set status=0 where id_producto=?";
-	    
-	    int resultadoFuncion = jdbctemple1.queryForObject(sqlFuncion, new Object[]{id}, Integer.class);
-	    
-	    return resultadoFuncion;
+	    String sqlFuncion = "UPDATE producto SET status = 0 WHERE id_producto = ?";
+	    int rowsAffected = jdbctemple1.update(sqlFuncion, id);
+	    return rowsAffected;
 	}
 
 	@Override
 	public int insertProduct(ProductoDTO product) {
-		product.setCosto_total(product.getCosto_unitario()*product.getIva());
-		 String sqlFuncion = "insert into producto(id_producto,nombre_producto,iva,costo_unitario,costo_total,descripcion,status) values (?,?,?,?,?,?,?)";
-		    int resultadoFuncion = jdbctemple1.queryForObject(sqlFuncion, new Object[]{product.getId_producto(),
-		    		product.getNombre_producto(),product.getIva(),product.getCosto_unitario(),product.getCosto_total(),
-		    		product.getDescripcion(), product.getStatus()}, Integer.class);
-
-		    return resultadoFuncion;
+	    product.setCosto_total(product.getCosto_unitario() * product.getIva());
+	    String sqlFuncion = "INSERT INTO producto (id_producto, nombre_producto, iva, costo_unitario, costo_total, descripcion, status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+	    int rowsAffected = jdbctemple1.update(sqlFuncion, product.getId_producto(), product.getNombre_producto(), product.getIva(), product.getCosto_unitario(), product.getCosto_total(), product.getDescripcion(), product.getStatus());
+	    return rowsAffected;
 	}
 
 	@Override
 	public int editProduct(ProductoDTO product) {
-		product.setCosto_total(product.getCosto_unitario()*product.getIva());
-		String sqlFuncion = "update producto set nombre_producto=?,iva=?,costo_unitario=?,costo_total=?,descripcion=?,status=? where id_producto=?";
-	    int resultadoFuncion = jdbctemple1.queryForObject(sqlFuncion, new Object[]{
-	    		product.getNombre_producto(),product.getIva(),product.getCosto_unitario(),product.getCosto_total(),
-	    		product.getDescripcion(), product.getStatus(), product.getId_producto()}, Integer.class);
-
-	    return resultadoFuncion;
+	    product.setCosto_total(product.getCosto_unitario() * product.getIva());
+	    String sqlFuncion = "UPDATE producto SET nombre_producto = ?, iva = ?, costo_unitario = ?, costo_total = ?, descripcion = ?, status = ? WHERE id_producto = ?";
+	    int rowsAffected = jdbctemple1.update(sqlFuncion, product.getNombre_producto(), product.getIva(), product.getCosto_unitario(), product.getCosto_total(), product.getDescripcion(), product.getStatus(), product.getId_producto());
+	    return rowsAffected;
 	}
-	
-	
+
 
 }
