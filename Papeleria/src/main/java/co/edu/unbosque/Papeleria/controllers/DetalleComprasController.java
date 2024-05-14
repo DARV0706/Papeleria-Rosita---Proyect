@@ -23,7 +23,7 @@ import co.edu.unbosque.Papeleria.dto.DetalleCompraDTO;
 
 @Controller
 @RequestMapping("/detalleCompras")
-public class DetalleComprasBean {
+public class DetalleComprasController {
 	@Autowired
 	private DetalleCompraDAO BuyRepoDao;
 	
